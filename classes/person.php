@@ -44,20 +44,36 @@ class  person extends config{
         }
     }
 
-    // add category to the category table
+    // add category to the db table
     public function addCategory($category_name){
-        $sql="INSERT INTO categories (`category_name`)VALUES('$category_name')";
-        $result=$this->conn->query($sql);
 
-        if($result==TRUE){
-            return TRUE;
-            
+        $check_sql="SELECT * FROM categories WHERE category_name='$category_name'";
+        $result_check=$this->conn->query($check_sql);
+
+        if($result_check->num_rows>0){
+            echo "<div class='alert alert-danger text-center'>The Category name is already in the table</div>";
         }else{
-            die('ERROR:'.$this->conn->error);
+            $sql="INSERT INTO categories (`category_name`)VALUES('$category_name')";
+            $result=$this->conn->query($sql);
+
+            if($result==TRUE){
+                header('location:adminDashboard.php');
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again </div>";
+            }
         }
     }
+        // fetch the categorty info 
+    public function getCategory(){
+        $sql="SELECT * FROM categories";
+        $result=$this->conn->query($sql);
 
-
+        if($result==1){
+            $row=$result->fetch_assoc();
+            
+            
+        }
+    }
 }
 
 

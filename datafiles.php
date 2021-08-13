@@ -37,7 +37,6 @@ if(isset($_POST['register'])){
     //add category
 }elseif(isset($_POST['add_category'])){
     $category_name=$_POST['category_name'];
-
     $personObj->addCategory($category_name);
 }
 ?>

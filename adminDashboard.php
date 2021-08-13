@@ -1,3 +1,4 @@
+
 <!-- for adminiser -->
 <!doctype html>
 <html lang="en">
@@ -26,7 +27,7 @@
 
                                 <!-- add category -->
                                 <!-- <a href=""><i class="fas fa-edit"></i>Edit</a> -->
-                                <form action="" method="POST">
+                                <form action="datafiles.php" method="POST">
                                     <div class="form-group pt-5 pb-3 text-center">
                                         <label for="">Add Category:</label>
                                         <input type="text" name="category_name" class="form-group">
