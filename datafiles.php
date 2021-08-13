@@ -38,5 +38,15 @@ if(isset($_POST['register'])){
 }elseif(isset($_POST['add_category'])){
     $category_name=$_POST['category_name'];
     $personObj->addCategory($category_name);
+
+    //add item
+}elseif(isset($_POST['add_item'])){
+    $item_name=$_POST['item_name'];
+    $item_price=$_POST['item_price'];
+    $item_description=$_POST['item_description'];
+    $arrival_date=$_POST['arrival_date'];
+    $category_id=$_POST['category'];
+
+    $personObj->addItem($item_name,$item_description,$item_price,$arrival_data,$category_id);
 }
 ?>

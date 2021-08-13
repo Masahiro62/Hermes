@@ -8,10 +8,9 @@ class  person extends config{
     public function register($username,$password,$fullname,$address,$contact_number,$email, $status){
         $sql_accounts ="INSERT INTO `accounts`( `username`, `password`) VALUES ('$username','$password')";
         $result_accouts=$this->conn->query($sql_accounts);
-
+        
         if($result_accouts==TRUE){
             $account_id = $this->conn->insert_id;
-
             $sql_users="INSERT INTO `users`(`fullname`, `address`, `contact_number`, `email`, `status`, `account_id` ) VALUES ('$fullname','$address','$contact_number','$email', '$status', '$account_id')";
             $result_users=$this->conn->query($sql_users);
 
@@ -44,14 +43,14 @@ class  person extends config{
         }
     }
 
-    // add category to the db table
+    // add category into db
     public function addCategory($category_name){
 
         $check_sql="SELECT * FROM categories WHERE category_name='$category_name'";
         $result_check=$this->conn->query($check_sql);
 
         if($result_check->num_rows>0){
-            echo "<div class='alert alert-danger text-center'>The Category name is already in the table</div>";
+            echo "<div class='alert alert-danger text-center'>The Category name is already in the table.</div>";
         }else{
             $sql="INSERT INTO categories (`category_name`)VALUES('$category_name')";
             $result=$this->conn->query($sql);
@@ -59,7 +58,7 @@ class  person extends config{
             if($result==TRUE){
                 header('location:adminDashboard.php');
             }else{
-                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again </div>";
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
             }
         }
     }
@@ -76,6 +75,29 @@ class  person extends config{
             return $rows;
         }else{
             return false;
+        }
+    }
+
+        // add item into db
+    public function addItem($item_name,$item_description,$item_price,$arrival_data,$category_id){
+        $check_sql="SELECT * FROM items WHERE item_name='$item_name'";
+        $result_check=$this->conn->query($check_sql);
+
+        if($result_check->num_rows>0){
+            echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
+
+        }else{
+            $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `arrival_date`,`category_id`) VALUES ('$item_name','$item_description','$item_price','$arrival_data',$category_id)";
+            $result=$this->conn->query($sql);
+
+            if($result==TRUE){
+                header('location:adminDashboard.php');
+
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+
+            }
+
         }
     }
 }

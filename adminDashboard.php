@@ -79,8 +79,6 @@
                     <section class="border mb-5" style="height: 500px;">
                         <div class="row">
                             <div class="col-md-12">
-                                <!-- <a href=""><i class="fas fa-edit"></i>Edit</a>
-                                <p>ADD items</p> -->
                                 <table class="table">
                                     <form action="" method="post">
                                         <thead class="table-dark">
@@ -96,7 +94,21 @@
                                                 <td>
                                                     <select name="category" id="" class="form-control">
                                                         <option value="" hidden>choose category</option>
-                                                        <option value=""></option>
+                                                        <?php 
+                                                            $selectCate=$personObj->displayCtateTable();
+                                                            if($selectCate==false){
+                                                        ?>
+                                                            <option value="none" class="text-danger">NO RECORD</option>
+                                                        <?php
+                                                            }else{
+                                                                foreach($displayCate as $dcate){
+                                                            
+                                                        ?>
+                                                            <option value="category_chosen"><?php echo $dcate['category_name'];?></option>
+                                                        <?php 
+                                                            }
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </td>
                                             </tr>
@@ -109,8 +121,8 @@
                                                 <td><input type="number" name="item_stock" id="" class="form-control"></td>
                                             </tr>
                                             <tr>
-                                                <td>PUBLISH DATE or ARRIVAL DATE:</td>
-                                                <td><input type="date" name="date" id="" class="form-control"></td>
+                                                <td>ARRIVAL DATE:</td>
+                                                <td><input type="date" name="arrival_date" id="" class="form-control"></td>
                                             </tr>
                                             <tr>
                                                 <td>DESCRIPTION:</td>
