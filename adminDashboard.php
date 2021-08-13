@@ -1,4 +1,6 @@
-
+<?php
+    include 'datafiles.php';
+?>
 <!-- for adminiser -->
 <!doctype html>
 <html lang="en">
@@ -27,7 +29,7 @@
 
                                 <!-- add category -->
                                 <!-- <a href=""><i class="fas fa-edit"></i>Edit</a> -->
-                                <form action="datafiles.php" method="POST">
+                                <form action="" method="POST">
                                     <div class="form-group pt-5 pb-3 text-center">
                                         <label for="">Add Category:</label>
                                         <input type="text" name="category_name" class="form-group">
@@ -41,11 +43,31 @@
                                         <th>NAME</th>
                                         <th colspan="2"></th>
                                     </thead>
+
                                     <tbody>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-center"><a href="update_category.php" class="btn btn-warning">UPDATE</a></td>
-                                        <td><a href="delete_categpory.php" class="btn btn-danger">DELETE</a></td>
+                                        <?php 
+                                            $displayCate=$personObj->displayCtateTable();
+                                            if($displayCate==false){
+                                        ?>
+
+                                            <td colspan="4" class="text-danger">No Record Found</td>
+                                        <?php 
+                                            }else{
+                                                foreach($displayCate as $Cate){
+                                           
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $Cate['category_id'];?></td>
+                                                <td><?php echo $Cate['category_name'];?></td>
+                                                <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate;?>" class="btn btn-warning">UPDATE</a></td>
+                                                <td><a href="delete_categpory.php?=category_id=<?php echo $Cate;?>" class="btn btn-danger">DELETE</a></td>
+                                            </tr>
+                                        <?php
+                                        
+                                            }
+                                         }
+                                        ?>
+
                                     </tbody>
                                 </table>
                             </div>

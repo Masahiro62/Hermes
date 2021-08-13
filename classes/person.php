@@ -63,15 +63,19 @@ class  person extends config{
             }
         }
     }
-        // fetch the categorty info 
-    public function getCategory(){
+        // fetch the categorty info and display
+    public function displayCtateTable(){
         $sql="SELECT * FROM categories";
         $result=$this->conn->query($sql);
-
-        if($result==1){
-            $row=$result->fetch_assoc();
-            
-            
+        $rows=array();
+        
+        if($result->num_rows>0){
+            while($displayCate=$result->fetch_assoc()){
+                $rows[]=$displayCate;
+            }
+            return $rows;
+        }else{
+            return false;
         }
     }
 }
