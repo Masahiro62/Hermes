@@ -100,6 +100,29 @@ class  person extends config{
 
         }
     }
+
+    public function updateCate($u_category_name,$category_id){
+        $check_sql="SELECT * FROM categories WHERE category_name='$u_category_name'";
+        $result_check=$this->conn->query($check_sql);
+        // check if there is the name already or not 
+        if($result_check->numrows>0){
+            echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
+
+        }else{
+            $sql="UPDATE categories SET `category_name`='$u_category_name' WHERE `category_id`='$category_id' ";
+            $result_sql=$this->conn->query($sql);
+
+            if($result_sql==TRUE){
+                header('location:adminDashboard.php');
+
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+
+            }
+        }
+
+    }
+
 }
 
 

@@ -59,8 +59,8 @@
                                             <tr>
                                                 <td><?php echo $Cate['category_id'];?></td>
                                                 <td><?php echo $Cate['category_name'];?></td>
-                                                <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate;?>" class="btn btn-warning">UPDATE</a></td>
-                                                <td><a href="delete_categpory.php?=category_id=<?php echo $Cate;?>" class="btn btn-danger">DELETE</a></td>
+                                                <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
+                                                <td><a href="delete_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-danger">DELETE</a></td>
                                             </tr>
                                         <?php
                                         
