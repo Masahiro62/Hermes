@@ -80,7 +80,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table">
-                                    <form action="" method="post">
+                                    <form action="" method="POST">
                                         <thead class="table-dark">
                                             <th colspan="2" class="text-center fs-4">Add Item</th>
                                         </thead>
@@ -92,7 +92,7 @@
                                             <tr>
                                                 <td>CATEGORY:</td>
                                                 <td>
-                                                    <select name="category" id="" class="form-control">
+                                                    <select name="category" id="category" class="form-control">
                                                         <option value="" hidden>choose category</option>
                                                         <?php 
                                                             $selectCate=$personObj->displayCtateTable();
@@ -104,7 +104,7 @@
                                                                 foreach($displayCate as $dcate){
                                                             
                                                         ?>
-                                                            <option value="category_chosen"><?php echo $dcate['category_name'];?></option>
+                                                            <option value=""><?php echo $dcate['category_id'].": ".$dcate['category_name'];?></option>
                                                         <?php 
                                                             }
                                                         }
@@ -118,7 +118,7 @@
                                             </tr>
                                             <tr>
                                                 <td>STOCK:</td>
-                                                <td><input type="number" name="item_stock" id="" class="form-control"></td>
+                                                <td><input type="number" name="item_stocks" id="" class="form-control"></td>
                                             </tr>
                                             <tr>
                                                 <td>ARRIVAL DATE:</td>
