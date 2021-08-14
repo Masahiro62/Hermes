@@ -1,4 +1,7 @@
+<?php
+ session_start();
 
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +18,7 @@
       <div class="container-fluid">
           <div class="row bg-primary" style="line-height:70px;">
              <div class="border border-danger w-25 ps-5">               
-                  <i class="fas fa-user text-white text-center me-1"></i><a href="profile.php" class="text-white text-start">username</a>
+                  <i class="fas fa-user text-white text-center me-1"></i><a href="profile.php" class="text-white text-start"><?php echo $_SESSION['username'] ;?></a>
              </div>
 
             <div class="border border-danger w-50">
