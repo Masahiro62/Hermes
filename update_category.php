@@ -1,12 +1,11 @@
 <?php
     include 'datafiles.php';
-    // $category_id=$_GET['category_id'];
-    // $cate=$personObj->updateCate($u_category_name,$category_id);
+    $displayCate=$personObj->displayCateTable();
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Update category</title>
+    <title>Update category</title> 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,9 +22,9 @@
                     <h2>UPDATE CATEGORY</h2>
                 </div>
                 <div class="card-body text-center">
-                    <form action="" method="POST">
-                        <input type="hidden" name="item_id" value="">
-                        <input type="text" name="u_category_name" value="" class="">
+                    <form action="datafiles.php" method="POST">
+                        <input type="hidden" name="item_id" value="<?php $displayCate['category_id'];?>">
+                        <input type="text" name="u_category_name" value="<?php $displayCate['category_name'];?>" class="">
                         <input type="submit" name="update_category" value="UPDATE" class="btn btn-warning">
                     </form>
                 </div>

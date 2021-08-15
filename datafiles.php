@@ -50,9 +50,9 @@ if(isset($_POST['register'])){
 
     $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$arrival_date,$category_id);
 
-}elseif(isset($_POST['update_cxategory'])){
+}elseif(isset($_POST['update_category'])){
     $u_category_name=$_POST['u_category_name'];
-    $category_id=$_GET['category_id'];
+    $category_id=$_POST['category_id'];
 
     $personObj->updateCate($u_category_name,$category_id);
 }

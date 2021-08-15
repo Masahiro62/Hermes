@@ -63,7 +63,7 @@ class  person extends config{
         }
     }
         // fetch the categorty info and display
-    public function displayCtateTable(){
+    public function displayCateTable(){
         $sql="SELECT * FROM categories";
         $result=$this->conn->query($sql);
         $rows=array();
@@ -105,7 +105,7 @@ class  person extends config{
         $check_sql="SELECT * FROM categories WHERE category_name='$u_category_name'";
         $result_check=$this->conn->query($check_sql);
         // check if there is the name already or not 
-        if($result_check->numrows>0){
+        if($result_check->num_rows>0){
             echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
 
         }else{

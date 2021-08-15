@@ -1,5 +1,6 @@
 <?php
     include 'datafiles.php';
+    $category_id=$_GET['category_id'];
 ?>
 <!-- for adminiser -->
 <!doctype html>
@@ -28,7 +29,6 @@
                             <div class="col-md-12">
 
                                 <!-- add category -->
-                                <!-- <a href=""><i class="fas fa-edit"></i>Edit</a> -->
                                 <form action="" method="POST">
                                     <div class="form-group pt-5 pb-3 text-center">
                                         <label for="">Add Category:</label>
@@ -36,6 +36,7 @@
                                         <input type="submit" name="add_category" value="ADD" class="btn btn-success">
                                     </div>
                                 </form>
+                                <hr class="w-50 mx-auto">
                                 <h3 class="text-center">Category Table</h3>
                                 <table class="table table-hover">
                                     <thead class=" table-dark">
@@ -46,7 +47,7 @@
 
                                     <tbody>
                                         <?php 
-                                            $displayCate=$personObj->displayCtateTable();
+                                            $displayCate=$personObj->displayCateTable();
                                             if($displayCate==false){
                                         ?>
 
@@ -95,7 +96,7 @@
                                                     <select name="category" id="category" class="form-control">
                                                         <option value="" hidden>choose category</option>
                                                         <?php 
-                                                            $selectCate=$personObj->displayCtateTable();
+                                                            $selectCate=$personObj->displayCateTable();
                                                             if($selectCate==false){
                                                         ?>
                                                             <option value="none" class="text-danger">NO RECORD</option>
