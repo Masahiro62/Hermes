@@ -77,6 +77,40 @@ class  person extends config{
             return false;
         }
     }
+    public function updateCate($u_category_name,$category_id){
+        $check_sql="SELECT * FROM categories WHERE category_name='$u_category_name'";
+        $result_check=$this->conn->query($check_sql);
+        // check if there is the name already or not 
+        if($result_check->num_rows>0){
+            echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
+
+        }else{
+            $sql="UPDATE categories SET `category_name`='$u_category_name' WHERE `category_id`='$category_id' ";
+            $result_sql=$this->conn->query($sql);
+
+            if($result_sql==TRUE){
+                header('location:adminDashboard.php');
+
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+
+            }
+        }
+
+    }
+
+    // delete categpry
+    public function deleteCate($category_id){
+        $sql="DELETE FROM categories WHERE category_id='$category_id'";
+
+        if($this->conn->query($sql)){
+            header('location:adminDashboard.php');
+        }else{
+            echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+
+        }
+    }
+
 
         // add item into db
     public function addItem($item_name,$item_description,$item_stocks,$item_price,$arrival_date,$category_id){
@@ -101,27 +135,6 @@ class  person extends config{
         }
     }
 
-    public function updateCate($u_category_name,$category_id){
-        $check_sql="SELECT * FROM categories WHERE category_name='$u_category_name'";
-        $result_check=$this->conn->query($check_sql);
-        // check if there is the name already or not 
-        if($result_check->num_rows>0){
-            echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
-
-        }else{
-            $sql="UPDATE categories SET `category_name`='$u_category_name' WHERE `category_id`='$category_id' ";
-            $result_sql=$this->conn->query($sql);
-
-            if($result_sql==TRUE){
-                header('location:adminDashboard.php');
-
-            }else{
-                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
-
-            }
-        }
-
-    }
 
 }
 

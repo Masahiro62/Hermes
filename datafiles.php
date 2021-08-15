@@ -55,6 +55,10 @@ if(isset($_POST['register'])){
     $category_id=$_POST['category_id'];
 
     $personObj->updateCate($u_category_name,$category_id);
+
+}elseif(isset($_POST['delete_category'])){
+    $category_id=$_POST['category_id'];
+    $personObj->deleteCate($category_id);
 }
 
 ?>
