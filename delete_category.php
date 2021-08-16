@@ -44,5 +44,3 @@
   </body>
 </html>
 
-    <!-- <?php echo $cate['category_id'];?>
-    <?php echo $cata['category_name'];?> -->

@@ -24,7 +24,7 @@
                     <h2>UPDATE CATEGORY</h2>
                 </div>
                 <div class="card-body text-center">
-                    <form action="datafiles.php" method="POST">
+                    <form action="" method="POST">
                         <input type="hidden" name="item_id" value="<?php echo $displayCate['category_id'];?>">
                         <input type="text" name="u_category_name" value="<?php echo $displayCate['category_name'];?>" class="">
                         <input type="submit" name="update_category" value="UPDATE" class="btn btn-warning">

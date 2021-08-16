@@ -101,7 +101,7 @@ class  person extends config{
             $result_sql=$this->conn->query($sql);
 
             if($result_sql==TRUE){
-                header('location:adminDashboard.php');
+                header('location:adminDashboard.php?message=category successfully updated');
 
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
