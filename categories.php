@@ -14,12 +14,14 @@
 
   </head>
   <body>
+
+      <!-- for admin , category page -->
+      <header><?php include 'header.php';?></header>
+      
       <!-- back to dashboarde -->
       <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
       <div class="container-fluid">
-      
-      <!-- for admin , category page -->
-      <header><?php include 'header.php';?></header>
+
       <main>
         <div class="conutainer-fluid">
             <!-- add category -->

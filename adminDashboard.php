@@ -19,239 +19,60 @@
       <?php include 'header.php'?>
     </header>
     <main>
-        <div class="container-fluid border border-dark">
-            <!-- left part -->
-            <div class="border border-danger w-75 float-start">
-                <div class="w-100" style="height: 1500px;">
-                    <section class="border" style="height: 500px;">
-                        <div class="row">
-                            <div class="col-md-12">
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-md-4 btn border border-danger p-5 w-25 mx-auto">
+                    <a href="categories.php" class="">
+                        <i class="fas fa-tags text-danger text-center"></i>
+                        <br>
+                        <p>CATEGORY</p>
+                    </a>
+                </div>
 
-                                <!-- add category -->
-                                <form action="" method="POST">
-                                    <div class="form-group pt-5 pb-3 text-center">
-                                        <label for="">Add Category:</label>
-                                        <input type="text" name="category_name" class="form-group">
-                                        <input type="submit" name="add_category" value="ADD" class="btn btn-success">
-                                    </div>
-                                </form>
-                                <hr class="w-50 mx-auto">
-                                <h3 class="text-center">Category Table</h3>
-                                <table class="table table-hover">
-                                    <thead class=" table-dark">
-                                        <th>ID</th>
-                                        <th>NAME</th>
-                                        <th colspan="2"></th>
-                                    </thead>
+                <div class="col-md-4 btn border border-primary p-5 w-25 mx-auto">
+                    <a href="items.php" class="">
+                        <i class="fas fa-shopping-cart text-primary"></i>
+                        <br>
+                        <p>ITEM</p>
+                    </a>
+                </div>
 
-                                    <tbody>
-                                        <?php 
-                                            $displayCate=$personObj->displayCateTable();
-                                            if($displayCate==false){
-                                        ?>
-
-                                            <td colspan="4" class="text-danger">No Record Found</td>
-                                        <?php 
-                                            }else{
-                                                foreach($displayCate as $Cate){
-                                           
-                                        ?>
-                                            <tr>
-                                                <td><?php echo $Cate['category_id'];?></td>
-                                                <td><?php echo $Cate['category_name'];?></td>
-                                                <td class="text-center"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
-                                                <td>
-                                                    <!-- button trigger modal -->
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_category">
-                                                        DELETE
-                                                    </button>
-
-                                                    <!-- modal-->
-                                                    <div class="modal fade" id="modalId_category" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">DELETE</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" value="">
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <P>Are you sure to delete " <strong><?php echo $Cate['category_name'];?> </strong>" ?</P>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <form action="" method="GET">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <input type="number" hidden name="category_id" hidden value="<?php echo $Cate['category_id'];?>">
-                                                                        <input type="submit" name="operation_category" value="DELETE" class="btn btn-danger">
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                        
-                                            }
-                                         }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <hr>
-                    </section>
-
-                        <!-- add item -->
-                    <section class="border mb-5" style="height: 500px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <table class="table">
-                                    <form action="" method="POST">
-                                        <thead class="table-dark">
-                                            <th colspan="2" class="text-center fs-4">Add Item</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>NAME:</td>
-                                                <td><input type="text" name="item_name" id="" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>CATEGORY:</td>
-                                                <td>
-                                                    <select name="category" id="category" class="form-control">
-                                                        <option value="" hidden>choose category</option>
-                                                        <?php 
-                                                            $selectCate=$personObj->displayCateTable();
-                                                            if($selectCate==false){
-                                                        ?>
-                                                            <option value="none" class="text-danger">NO RECORD</option>
-                                                        <?php
-                                                            }else{
-                                                                foreach($displayCate as $dcate){
-                                                            
-                                                        ?>
-                                                            <option value=""><?php echo $dcate['category_id'].": ".$dcate['category_name'];?></option>
-                                                        <?php 
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>PRICE:</td>
-                                                <td><input type="number" name="item_price" id="" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>STOCK:</td>
-                                                <td><input type="number" name="item_stocks" id="" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ARRIVAL DATE:</td>
-                                                <td><input type="date" name="arrival_date" id="" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>DESCRIPTION:</td>
-                                                <td><input type="text" name="item_description" id="" class="form-control"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ITEM IMAGE</td>
-                                                <td><input type="file" name="item_image" id="" class="form-control" ></td>
-                                            </tr>
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="2" class="text-center"><input type="submit" value="ADD" name="add_item" class="btn btn-success w-50"></td>
-                                                </tr>
-                                            </tfoot>
-                                        </tbody>
-                                    </form>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- display all item -->
-                    <section class="border" style="height: 500px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href=""><i class="fas fa-edit"></i>Edit</a>
-                                <h3 class="text-center">Item Table</h3>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <th>NAME</th>
-                                        <th>STOCKs</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY </th>
-                                        <th colspan="2"></th>
-                                    </thead>
-                                    <tbody>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-center"><a href="update_item.php" class="btn btn-warning">UPDATE</a></td>
-                                        <td><a href="delete_item.php" class="btn btn-danger">DELETE</a></td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </section>
+                <div class="col-md-4 btn border border-secondary p-5 w-25 mx-auto">
+                    <a href="events.php" class="">
+                        <i class="fas fa-calendar-day text-secondary"></i>
+                        <br>
+                        <p>EVENTS</p>
+                    </a>
                 </div>
             </div>
 
-            <!-- right part  -->
-            <aside class="border border-primary w-25 float-end">
-                <div class="w-100" style="height: 1500px;">
-                  <div class="border border-warning w-100" style="height: 100px;">
-                    <form action="" method="get" class="mt-4 mx-auto">
-                      <div class="input-group">
-                        <div class="form-outline">
-                          <input type="search" id="search" form="form-control" placeholder="Search in the site" class="p-2">
-                        </div>
-                        <button type="button" class="btn btn-primary">
-                          <i class="fas fa-search"></i>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-
-                  <article class="w-100 border" style="height: 350px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href=""><i class="fas fa-edit"></i>Edit</a>
-                            </div>
-                            <div><i class="fas fa-tag"></i></div>
-                        </div>
-                  </article>
-
-                  <article class="w-100 border" style="height: 350px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href=""><i class="fas fa-edit"></i>Edit</a>
-                            </div>
-                        </div>
-                  </article>
-
-                  <article class="w-100 border" style="height: 350px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href=""><i class="fas fa-edit"></i>Edit</a>
-                            </div>
-                        </div>
-                  </article>
-                  
-                  <article class="w-100 border" style="height: 350px;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href=""><i class="fas fa-edit"></i>Edit</a>
-                            </div>
-                        </div>
-
-                  </article>
+            <div class="row mt-5 mb-5">
+                <div class="col-md-4 btn border border-info p-5 w-25 mx-auto">
+                    <a href="order.php" class="">
+                        <i class="fas fa-clipboard-list text-info"></i>
+                        <br>
+                        <p>ORDER</p>
+                    </a>
                 </div>
-            </aside>
+
+                <div class="col-md-4 btn border border-success p-5 w-25 mx-auto">
+                    <a href="order.php" class="">
+                        <i class="fas fa-truck text-success"></i>
+                        <br>
+                        <p>DELIVER</p>
+                    </a>
+                </div>
+
+                <div class="col-md-4 btn border border-warning p-5 w-25 mx-auto">
+                    <a href="accounts.php" class="">
+                        <i class="fas fa-users text-warning"></i>
+                        <br>
+                        <p>ACCOUNT</p>
+                    </a>
+                </div>
+
+                
+            </div>
         </div>
     </main>
     <footer>
