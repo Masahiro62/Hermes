@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td><?php echo $Cate['category_id'];?></td>
                                                 <td><?php echo $Cate['category_name'];?></td>
-                                                <td class="text-center"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
+                                                <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
                                                 <td>
                                                     <!-- button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_category">
@@ -81,8 +81,8 @@
                                                                 <div class="modal-footer">
                                                                     <form action="" method="GET">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <input type="number" name="category_id" hidden value="<?php echo $Cate['category_id'];?>">
-                                                                        <input type="submit" name="operation" value="DELETE" class="btn btn-danger">
+                                                                        <input type="number" hidden name="category_id" hidden value="<?php echo $Cate['category_id'];?>">
+                                                                        <input type="submit" name="operation_category" value="DELETE" class="btn btn-danger">
                                                                     </form>
                                                                 </div>
                                                             </div>

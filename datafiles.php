@@ -50,14 +50,16 @@ if(isset($_POST['register'])){
 
     $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$arrival_date,$category_id);
 
+    //update category
 }elseif(isset($_POST['update_category'])){
     $u_category_name=$_POST['u_category_name'];
     $category_id=$_GET['category_id'];
 
     $personObj->updateCate($u_category_name,$category_id);
 
-}elseif(isset($_POST['delete_category'])){
-    $category_id=$_POST['category_id'];
+    //delete category
+}elseif(isset($_GET['operation_category'])){
+    $category_id=$_GET['category_id'];
     $personObj->deleteCate($category_id);
 }
 
