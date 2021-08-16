@@ -1,6 +1,5 @@
 <?php
     include 'datafiles.php';
-    $category_id=$_GET['category_id'];
 ?>
 <!-- for adminiser -->
 <!doctype html>

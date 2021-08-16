@@ -26,6 +26,7 @@ class  person extends config{
 
     // login part
     public function login($username,$password){
+        session_start();
         $sql="SELECT * FROM users INNER JOIN accounts ON users.account_id=accounts.account_id WHERE accounts.username='$username' AND accounts.password='$password'";
         $result=$this->conn->query($sql);
 
@@ -34,7 +35,6 @@ class  person extends config{
             $_SESSION['user_id']=$row['user_id'];
             $_SESSION['password']=$row['password'];
             $_SESSION['username']=$row['username'];
-
             if($row['status']=='U'){
                 header('Location:userDashboard.php');
             }else{
@@ -51,7 +51,7 @@ class  person extends config{
 
         if($result_check->num_rows>0){
             echo "<div class='alert alert-danger text-center'>The Category name is already in the table.</div>";
-        }else{
+        }elseif(!empty($category_name)){
             $sql="INSERT INTO categories (`category_name`)VALUES('$category_name')";
             $result=$this->conn->query($sql);
 
