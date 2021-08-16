@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td><?php echo $Cate['category_id'];?></td>
                                                 <td><?php echo $Cate['category_name'];?></td>
-                                                <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
+                                                <td class="text-center"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
                                                 <td>
                                                     <!-- button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_category">
@@ -222,7 +222,7 @@
                             <div class="col-md-12">
                                 <a href=""><i class="fas fa-edit"></i>Edit</a>
                             </div>
-                            <div></div>
+                            <div><i class="fas fa-tag"></i></div>
                         </div>
                   </article>
 

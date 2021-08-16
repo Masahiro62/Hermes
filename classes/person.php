@@ -56,7 +56,7 @@ class  person extends config{
             $result=$this->conn->query($sql);
 
             if($result==TRUE){
-                header('location:adminDashboard.php');
+                header('location:categories.php?message=the category was successfuly created');
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
             }
@@ -101,7 +101,7 @@ class  person extends config{
             $result_sql=$this->conn->query($sql);
 
             if($result_sql==TRUE){
-                header('location:adminDashboard.php?message=category successfully updated');
+                header('location:categories.php?message=the category successfully updated');
 
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
