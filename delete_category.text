@@ -1,5 +1,0 @@
-<?php 
-    include 'datafiles.php';
-    $category_id=$_GET['category_id'];
-    $personObj->deleteCate($category_id);
-?>
