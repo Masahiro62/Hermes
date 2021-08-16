@@ -60,14 +60,40 @@
                                                 <td><?php echo $Cate['category_id'];?></td>
                                                 <td><?php echo $Cate['category_name'];?></td>
                                                 <td class="text-center"><a href="update_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
-                                                <td><a href="delete_category.php?=category_id=<?php echo $Cate['category_id'];?>" class="btn btn-danger">DELETE</a></td>
+                                                <td>
+                                                    <!-- button trigger modal -->
+                                                    <button ype="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modelId_category">
+                                                        DELETE
+                                                    </button>
+
+                                                    <!-- modal-->
+                                                    <div class="modal fade" id="modelId_category" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">DELETE</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <P>Are you sure to delete " <?php echo $category_name;?> " ?</P>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <form action="" method="POST">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <input type="submit" name="delete_category" value="DELETE" class="btn btn-danger">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         <?php
                                         
                                             }
                                          }
                                         ?>
-
                                     </tbody>
                                 </table>
                             </div>
