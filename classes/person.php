@@ -77,6 +77,18 @@ class  person extends config{
             return false;
         }
     }
+        // choose specific category_id
+
+    public function chooseCate($category_id){
+        $sql="SELECT * FROM categories WHERE category_id= '$category_id'";
+        $result=$this->conn->query($sql);
+
+        if($result==TRUE){
+            return $result->fetch_assoc();
+            
+        }
+    }
+
     public function updateCate($u_category_name,$category_id){
         $check_sql="SELECT * FROM categories WHERE category_name='$u_category_name'";
         $result_check=$this->conn->query($check_sql);

@@ -1,6 +1,8 @@
 <?php
     include 'datafiles.php';
-    $displayCate=$personObj->displayCateTable();
+    $category_id=$_GET['category_id'];
+    // $displayCate=$personObj->displayCateTable();
+    $displayCate=$personObj->chooseCate($category_id);
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,8 +25,8 @@
                 </div>
                 <div class="card-body text-center">
                     <form action="datafiles.php" method="POST">
-                        <input type="hidden" name="item_id" value="<?php $displayCate['category_id'];?>">
-                        <input type="text" name="u_category_name" value="<?php $displayCate['category_name'];?>" class="">
+                        <input type="hidden" name="item_id" value="<?php echo $displayCate['category_id'];?>">
+                        <input type="text" name="u_category_name" value="<?php echo $displayCate['category_name'];?>" class="">
                         <input type="submit" name="update_category" value="UPDATE" class="btn btn-warning">
                     </form>
                 </div>
@@ -36,5 +38,3 @@
   </body>
 </html>
 
-    <!-- <?php echo $cate['category_id'];?>
-    <?php echo $cata['category_name'];?> -->

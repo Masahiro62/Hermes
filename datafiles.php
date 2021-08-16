@@ -52,7 +52,7 @@ if(isset($_POST['register'])){
 
 }elseif(isset($_POST['update_category'])){
     $u_category_name=$_POST['u_category_name'];
-    $category_id=$_POST['category_id'];
+    $category_id=$_GET['category_id'];
 
     $personObj->updateCate($u_category_name,$category_id);
 
