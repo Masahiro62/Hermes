@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Order page</title>
+    <title>Delivery page</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,32 +11,27 @@
 
   </head>
   <body>
-      <header><?php include'header.php';?></header>
+      <header><?php include 'header.php';?></header>
+        <!-- back to dashboarde -->
+        <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
+        <div class="container-fluid">
 
-      <!-- back to dashboarde -->
-      <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-      <div class="container-fluid">
-
+      <!-- just delivery list  -->
       <main>
-        <!-- order list and just show the table nobody can not change except changeing db -->
-        <div class="container-flud">
+        <div class="container-fluid">
             <div class="card w-50 mx-auto mt-5 mb-5">
                 <div class="card-header">
-                    <h3 class="text-center">ORDER LIST</h3>
+                    <h3 class="text-center">DELIVERY LIST</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead class="table-dark">
-                            <th>ORDER ID</th>
-                            <th>ITEM ID</th>
+                            <th>DELIVERY ID</th>
                             <th>USER ID</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>xxxx</td>
-                                <td>yyyy</td>
-                                <td>zzzz</td>
-                            </tr>
+                            <td>xxxx</td>
+                            <td>yyyy</td>
                         </tbody>
                     </table>
                 </div>

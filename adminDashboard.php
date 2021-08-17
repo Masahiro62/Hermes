@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="col-md-4 btn border border-success p-5 w-25 mx-auto">
-                    <a href="order.php" class="">
+                    <a href="delivery.php" class="">
                         <i class="fas fa-truck text-success"></i>
                         <br>
-                        <p>DELIVER LIST</p>
+                        <p>DELIVERY LIST</p>
                     </a>
                 </div>
 
