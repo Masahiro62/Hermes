@@ -18,6 +18,9 @@
           <div class="row bg-primary" style="line-height:70px;">
              <div class="border border-danger w-25 ps-5">               
                   <i class="fas fa-user text-white text-center me-1"></i><a href="profile.php" class="text-white text-start"><?php echo $_SESSION['username'] ;?></a>
+                  <span class="text-white">/</span>
+                  <i class="fas fa-door-open text-white"></i>
+                  <a href="logout.php" class="text-white"><span class="text-white text-start">Logout</span></a>
              </div>
 
             <div class="border border-danger w-50">
