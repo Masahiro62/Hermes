@@ -36,7 +36,7 @@
             <!-- category table -->
             <hr class="w-50 mx-auto">
                 <h3 class="text-center">Category Table</h3>
-                <table class="table table-hover">
+                <table class="table table-hover w-75 mx-auto">
                     <thead class=" table-dark">
                         <th>ID</th>
                         <th>NAME</th>
