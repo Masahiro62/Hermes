@@ -63,15 +63,14 @@
                     </a>
                 </div>
 
+                <!-- just check the outlook not order,buy... etc -->
                 <div class="col-md-4 btn border border-warning p-5 w-25 mx-auto">
-                    <a href="accounts.php" class="">
-                        <i class="fas fa-users text-warning"></i>
+                    <a href="userdashboard.php" class="">
+                        <i class="fas fa-desktop text-warning"></i>
                         <br>
-                        <p>ACCOUNT LIST</p>
+                        <p>CHECK our Output</p>
                     </a>
                 </div>
-
-                
             </div>
         </div>
     </main>

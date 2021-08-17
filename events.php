@@ -23,7 +23,7 @@
                 <div class="card-header">
                     <h3 class="text-center">EVENTS</h3>
                 </div>
-                <form action="" method="" class="">
+                <form action="" method="POST" class="">
                     <div class="card-body">
                         <label for="">EVENT NAME:</label>
                         <input type="text" name="event_name" class="form-control w-100">
@@ -39,8 +39,8 @@
             <!-- event table -->
             <section class="mt-3">
                 <h3 class="text-center">EVENT LIST</h3>
-                <table class="table table-hover w-50 mx-auto"> 
-                    <thead>
+                <table class="table table-hover w-75 mx-auto"> 
+                    <thead class="table-dark">
                             <th>ID</th>
                             <th>NAME</th>
                             <th>OBJECT</th>
