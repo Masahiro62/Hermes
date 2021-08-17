@@ -23,7 +23,7 @@
             <section>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table w-75 mx-auto mt-5">
+                        <table class="table w-50 mx-auto mt-5 mb-5">
                             <form action="" method="POST">
                                 <thead class="table-dark">
                                     <th colspan="2" class="text-center fs-4">Add Item</th>
@@ -75,11 +75,9 @@
                                         <td>ITEM IMAGE</td>
                                         <td><input type="file" name="item_image" id="" class="form-control" ></td>
                                     </tr>
-                                    <tfoot class="">
-                                        <tr class="">
-                                            <td colspan="2" class="text-center"><input type="submit" value="ADD" name="add_item" class="btn btn-success w-50 mt-3"></td>
-                                        </tr>
-                                    </tfoot>
+                                    <tr class="">
+                                        <td colspan="2" class="text-center"><input type="submit" value="ADD" name="add_item" class="btn btn-success w-50 mt-3"></td>
+                                    </tr>
                                 </tbody>
                             </form>
                         </table>
@@ -87,8 +85,9 @@
                 </div>
             </section>
             <!-- display all item -->
-            <section class="border" style="height: 500px;">
-                <div class="row">
+            <section class="
+            ">
+                <div class="row w-75 mx-auto">
                     <div class="col-md-12 mt-5">
                         <h3 class="text-center">Item Table</h3>
                         <table class="table table-hover">
