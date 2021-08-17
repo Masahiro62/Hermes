@@ -51,7 +51,7 @@
                     <a href="order.php" class="">
                         <i class="fas fa-clipboard-list text-info"></i>
                         <br>
-                        <p>ORDER</p>
+                        <p>ORDER LIST</p>
                     </a>
                 </div>
 
@@ -59,7 +59,7 @@
                     <a href="order.php" class="">
                         <i class="fas fa-truck text-success"></i>
                         <br>
-                        <p>DELIVER</p>
+                        <p>DELIVER LIST</p>
                     </a>
                 </div>
 
@@ -67,7 +67,7 @@
                     <a href="accounts.php" class="">
                         <i class="fas fa-users text-warning"></i>
                         <br>
-                        <p>ACCOUNT</p>
+                        <p>ACCOUNT LIST</p>
                     </a>
                 </div>
 
