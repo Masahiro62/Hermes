@@ -16,14 +16,14 @@
   <body>
       <div class="container-fluid">
           <div class="row bg-primary" style="line-height:70px;">
-             <div class="border border-danger w-25 ps-5">               
+             <div class=" w-25 ps-5">               
                   <i class="fas fa-user text-white text-center me-1"></i><a href="profile.php" class="text-white text-start"><?php echo $_SESSION['username'] ;?></a>
                   <span class="text-white">/</span>
                   <i class="fas fa-door-open text-white"></i>
                   <a href="logout.php" class="text-white"><span class="text-white text-start">Logout</span></a>
              </div>
 
-            <div class="border border-danger w-50">
+            <div class=" w-50">
               <div class="w-50 float-start text-end"><img src="assets/image/logo.png" alt="" style="height: 50px; width:50px;"></div>
               <div class="w-50 float-end"><span class=" text-white fs-2">Hermes</span></div>
             </div>
