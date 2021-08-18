@@ -39,18 +39,6 @@ if(isset($_POST['register'])){
     $category_name=$_POST['category_name'];
     $personObj->addCategory($category_name);
 
-// }elseif(isset($_POST['add_item'])){
-//     //add item
-//     $item_name=$_POST['item_name'];
-//     $item_price=$_POST['item_price'];
-//     $item_stocks=$_POST['item_stocks'];
-//     $item_description=$_POST['item_description'];
-//     $publish_date=$_POST['publish_date'];
-//     $category_id=$_POST['category'];
-// $image = $_FILES;
-
-//     $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id);
-
 }elseif(isset($_POST['update_category'])){
     //update category
     $u_category_name=$_POST['u_category_name'];
@@ -73,9 +61,16 @@ if(isset($_POST['register'])){
     $personObj->addEvent($event_title,$event_detail,$event_date);
 
 }elseif(isset($_POST['add_item'])){
-    // 
-    var_dump($_POST);
-    var_dump($_FILES);
-}
+    //add item
+    $item_name=$_POST['item_name'];
+    $item_price=$_POST['item_price'];
+    $item_stocks=$_POST['item_stocks'];
+    $item_description=$_POST['item_description'];
+    $publish_date=$_POST['publish_date'];
+    $category_id=$_POST['category'];
+    $item_image=$_FILES;
 
+    $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id,$item_image);
+
+}
 ?>

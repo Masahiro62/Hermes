@@ -36,9 +36,9 @@ class  person extends config{
             $_SESSION['password']=$row['password'];
             $_SESSION['username']=$row['username'];
             if($row['status']=='U'){
-                header('Location:userDashboard.php');
+                header("location:userDashboard.php");
             }else{
-                header('Location:adminDashboard.php');
+                header("location:adminDashboard.php");
             }
         }
     }
@@ -56,7 +56,7 @@ class  person extends config{
             $result=$this->conn->query($sql);
 
             if($result==TRUE){
-                header('location:categories.php?message=the category was successfuly created');
+                header("location:categories.php?message=the category was successfuly created");
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
             }
@@ -102,7 +102,7 @@ class  person extends config{
             $result_sql=$this->conn->query($sql);
 
             if($result_sql==TRUE){
-                header('location:categories.php?message=the category successfully updated');
+                header("location:categories.php?message=the category successfully updated");
 
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
@@ -117,7 +117,7 @@ class  person extends config{
         $sql="DELETE FROM categories WHERE category_id='$category_id'";
 
         if($this->conn->query($sql)){
-            header('location:adminDashboard.php');
+            header("location:adminDashboard.php");
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
 
@@ -125,8 +125,9 @@ class  person extends config{
     }
 
 
-        // add item into db
-    public function addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id){
+    // add item into db
+    public function addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id,$file){
+        // check the data 
         $check_sql="SELECT * FROM items WHERE item_name='$item_name'";
         $result_check=$this->conn->query($check_sql);
 
@@ -134,17 +135,52 @@ class  person extends config{
             echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
 
         }else{
-            $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `publish_date`,`category_id`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$publish_date','$category_id')";
-            $result=$this->conn->query($sql);
+            //check the pic type /size...etc
+            $error=0;
+            $error_message="";
 
-            if($result==TRUE){
-                header('location:items.php?message=the item was successfully created');
+            $fileType=strtolower(pathinfo($file['item_image']['name'],PATHINFO_EXTENSION));
+            $fileName=date('m-d-y h:i:s a',time()).".".$fileType;
+            $target_directory="uploads/item_pictures/";
+            $target_file=$target_directory.$fileName;
+        
+            //var_dump($file['name']);//null when i use ['name']
 
+            //check if the file is an actual image
+            $imageSize=getimagesize($file['item_image']['name']);
+            //Warning: getimagesize() expects parameter 1 to be string, array given in
+
+            if($imageSize==false){
+                $error=1;
+                $error_message="The File is not image";
+
+            }elseif($error==0){
+
+                //check file size (e.g No images will accepted avobe 500kb)
+                if($file["item_image"]["size"]>50000000){
+                    $error=1;
+                    $error_message="Image is too big";
+
+                }else{
+                    //upload and move to the our uploads/
+                    move_uploaded_file($file['item_image']['name'],$target_file);
+
+                    //update db pic and item info
+                    $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `publish_date`,`category_id`,`item_image`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$publish_date','$category_id','$fileName')";
+                    $result=$this->conn->query($sql);
+
+                    //display message success oe error 
+                    if($result==TRUE){
+                        header("location:items.php?message=the item was successfully created");
+
+                    }else{
+                        echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+                    }
+                }
             }else{
-                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
-
+                // have to ask this part to fix the message
+                header("location:items.php?success=0&message=$error_message");
             }
-
         }
     }
 
@@ -172,6 +208,7 @@ class  person extends config{
         }
     }
 
+
     // fetch the events info and display
     public function dispalyEventsTable(){
         $sql="SELECT * FROM `events`";
@@ -188,8 +225,6 @@ class  person extends config{
         }
 
     }
-
-
 
 
 
