@@ -71,7 +71,7 @@ class  person extends config{
         
         if($result->num_rows>0){
             while($displayCate=$result->fetch_assoc()){
-                $rows[]=$displayCate;
+                array_push($rows,$displayCate);
             }
             return $rows;
         }else{
@@ -126,7 +126,7 @@ class  person extends config{
 
 
         // add item into db
-    public function addItem($item_name,$item_description,$item_stocks,$item_price,$arrival_date,$category_id){
+    public function addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id){
         $check_sql="SELECT * FROM items WHERE item_name='$item_name'";
         $result_check=$this->conn->query($check_sql);
 
@@ -134,7 +134,7 @@ class  person extends config{
             echo "<div class='alert alert-danger text-center'>The item is already in the table.</div>";
 
         }else{
-            $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `arrival_date`,`category_id`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$arrival_date','$category_id')";
+            $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `publish_date`,`category_id`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$publish_date','$category_id')";
             $result=$this->conn->query($sql);
 
             if($result==TRUE){

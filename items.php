@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table w-50 mx-auto mt-5 mb-5">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <thead class="table-dark">
                                     <th colspan="2" class="text-center fs-4">Add Item</th>
                                 </thead>
@@ -42,13 +42,13 @@
                                                     $selectCate=$personObj->displayCateTable();
                                                     if($selectCate==false){
                                                 ?>
-                                                                <option value="none" class="text-danger">NO RECORD</option>
+                                                    <option value="" class="text-danger">NO RECORD</option>
                                                 <?php
                                                     }else{
-                                                        foreach($displayCate as $dcate){
+                                                        foreach($selectCate as $scate){
                                                         
                                                 ?>
-                                                    <option value=""><?php echo $dcate['category_id'].": ".$dcate['category_name'];?></option>
+                                                    <option value="<?php echo $scate['category_id'];?>"><?php echo $scate['category_name'];?></option>
                                                 <?php 
                                                     }
                                                 }
@@ -64,8 +64,8 @@
                                         <td><input type="number" name="item_stocks" id="" class="form-control"></td>
                                     </tr>
                                     <tr>
-                                        <td>ARRIVAL DATE:</td>
-                                        <td><input type="date" name="arrival_date" id="" class="form-control"></td>
+                                        <td>PUBLISH DATE:</td>
+                                        <td><input type="date" name="publish_date" id="" class="form-control"></td>
                                     </tr>
                                     <tr>
                                         <td>DESCRIPTION:</td>
@@ -73,7 +73,7 @@
                                     </tr>
                                     <tr>
                                         <td>ITEM IMAGE</td>
-                                        <td><input type="file" name="item_image" id="" class="form-control" ></td>
+                                        <td><input type="file" name="item_image" id="" class="form-control" accept="image/png,image/jpeg,image/jpg"></td>
                                     </tr>
                                     <tr class="">
                                         <td colspan="2" class="text-center"><input type="submit" value="ADD" name="add_item" class="btn btn-success w-50 mt-3"></td>
