@@ -68,7 +68,7 @@
                     <a href="userdashboard.php" class="">
                         <i class="fas fa-desktop text-warning"></i>
                         <br>
-                        <p>CHECK our Output</p>
+                        <p>USER DASHBOARD</p>
                     </a>
                 </div>
             </div>

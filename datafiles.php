@@ -6,8 +6,8 @@
 include 'classes/person.php';
 $personObj= new person;
 
-    //registeration
 if(isset($_POST['register'])){
+    //registeration
     $fullname=$_POST['fullname'];
     $address=$_POST['address'];
     $contact_number=$_POST['contact_number'];
@@ -27,20 +27,20 @@ if(isset($_POST['register'])){
         echo"<div class='alert alert-danger' role='alert'><strong>PASSWORD and CONFIRM PASSWORD are not the same.<br>Try it again</strong></div>";
     }
 
-    //login 
 }elseif(isset($_POST['login'])){
+    //login
     $username=$_POST['username'];
     $password=$_POST['password'];
 
     $personObj->login($username,$password);
 
-    //add category
 }elseif(isset($_POST['add_category'])){
+    //add category
     $category_name=$_POST['category_name'];
     $personObj->addCategory($category_name);
 
-    //add item
 }elseif(isset($_POST['add_item'])){
+    //add item
     $item_name=$_POST['item_name'];
     $item_price=$_POST['item_price'];
     $item_stocks=$_POST['item_stocks'];
@@ -50,17 +50,27 @@ if(isset($_POST['register'])){
 
     $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$arrival_date,$category_id);
 
-    //update category
 }elseif(isset($_POST['update_category'])){
+    //update category
     $u_category_name=$_POST['u_category_name'];
     $category_id=$_GET['category_id'];
 
     $personObj->updateCate($u_category_name,$category_id);
 
-    //delete category
 }elseif(isset($_GET['operation_category'])){
+    //delete category
     $category_id=$_GET['category_id'];
     $personObj->deleteCate($category_id);
+
+
+}elseif(isset($_POST['add_event'])){
+    //add event into db
+    $event_title=$_POST['event_title'];
+    $event_detail=$_POST['event_detail'];
+    $event_date=$_POST['event_date'];
+    
+    $personObj->addEvent($event_title,$event_detail,$event_date);
+
 }
 
 ?>

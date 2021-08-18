@@ -62,6 +62,7 @@ class  person extends config{
             }
         }
     }
+
         // fetch the categorty info and display
     public function displayCateTable(){
         $sql="SELECT * FROM categories";
@@ -77,8 +78,8 @@ class  person extends config{
             return false;
         }
     }
-        // choose specific category_id
 
+        // choose specific category_id
     public function chooseCate($category_id){
         $sql="SELECT * FROM categories WHERE category_id= '$category_id'";
         $result=$this->conn->query($sql);
@@ -137,7 +138,7 @@ class  person extends config{
             $result=$this->conn->query($sql);
 
             if($result==TRUE){
-                header('location:adminDashboard.php');
+                header('location:items.php?message=the item was successfully created');
 
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
@@ -146,6 +147,51 @@ class  person extends config{
 
         }
     }
+
+    // EVENT
+    // add event into db
+    public function addEvent($event_title,$event_detail,$event_date){
+
+        // check the name of the event on db
+        $check_sql="SELECT*FROM `events` WHERE event_title='$event_title'";
+        $result_check=$this->conn->query($check_sql);
+
+        if($result_check->num_rows>0){
+            echo "<div class='alert alert-danger text-center'>The event is already in the table.</div>";
+
+        }else{
+            // insert into db
+            $sql="INSERT INTO `events`(`event_title`,`event_detail`,`event_date`) VALUES('$event_title','$event_detail','$event_date')";
+            $result=$this->conn->query($sql);
+
+            if($result==TRUE){
+            header('location:events.php?message=the event was successfully created');
+            }else{
+            echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+            }   
+        }
+    }
+
+    // fetch the events info and display
+    public function dispalyEventsTable(){
+        $sql="SELECT * FROM `events`";
+        $result=$this->conn->query($sql);
+        $rows=array();
+
+        if($result->num_rows>0){
+            while($displayEvent=$result->fetch_assoc()){
+                $rows[]=$displayEvent;
+            }
+            return $rows;
+        }else{
+            return false;
+        }
+
+    }
+
+
+
+
 
 
 }

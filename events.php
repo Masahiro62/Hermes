@@ -1,3 +1,8 @@
+<?php 
+    include 'datafiles.php';
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,10 +30,12 @@
                 </div>
                 <form action="" method="POST" class="">
                     <div class="card-body">
-                        <label for="">EVENT NAME:</label>
-                        <input type="text" name="event_name" class="form-control w-100">
-                        <label for="" class="mt-3">EVENT OBJECT:</label>
-                        <textarea name="event_object" class="w-100" id="" cols="30" rows="10" maxlength="255" placeholder="EX) We will have the event on this weekend...etc"></textarea>
+                        <label for="">TITLE:</label>
+                        <input type="text" name="event_title" class="form-control w-100">
+                        <label for="" class="mt-2">DATE:</label>
+                        <input type="date" name="event_date" id="" class="form-control">
+                        <label for="" class="mt-2">DETAIL:</label>
+                        <textarea name="event_detail" class="w-100" id="" cols="30" rows="10" maxlength="255" placeholder="EX) We will have the event on this weekend...etc"></textarea>
                     </div>
                     <div class="card-footer text-center">
                         <input type="submit" name="add_event" value="ADD" class="btn btn-primary w-75">
@@ -39,21 +46,36 @@
             <!-- event table -->
             <section class="mt-3">
                 <h3 class="text-center">EVENT LIST</h3>
-                <table class="table table-hover w-75 mx-auto"> 
+                <table class="table table-hover w-100 mx-auto"> 
                     <thead class="table-dark">
                             <th>ID</th>
-                            <th>NAME</th>
-                            <th>OBJECT</th>
+                            <th>DATE</th>
+                            <th>TITLE</th>
+                            <th>DETAIL</th>
                             <th colspan="2"></th>
                     </thead>
                     <tbody>
+                        <?php
+                            $displayEvent=$personObj->dispalyEventsTable();
+                            if($displayEvent==false){
+                        ?>
+                        <td colspan="6" class="text-danger">No Record Found</td>
+                        <?php
+                            }else{
+                                foreach($displayEvent as $Eve){
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>summer sale </td>
-                            <td>We are going to discount some products which are realtive to SUMMER</td>
+                            <td><?php echo $Eve['event_id']?></td>
+                            <td><?php echo $Eve['event_date']?></td>
+                            <td><?php echo $Eve['event_title']?></td>
+                            <td><?php echo $Eve['event_detail']?></td>
                             <td><a href="" class="btn btn-success ">EDIT</a></td>
                             <td><a href="" class="btn btn-danger ">DELETE</a></td>
                         </tr>
+                        <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table >
             </section>
