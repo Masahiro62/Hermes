@@ -117,7 +117,7 @@ class  person extends config{
         $sql="DELETE FROM categories WHERE category_id='$category_id'";
 
         if($this->conn->query($sql)){
-            header("location:adminDashboard.php");
+            header("location:categories.php");
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
 
@@ -144,8 +144,6 @@ class  person extends config{
             $target_directory="uploads/item_pictures/";
             $target_file=$target_directory.$fileName;
         
-            //var_dump($file['name']);//null when i use ['name']
-            //var_dump($file);
             //check if the file is an actual image
             $imageSize=getimagesize($file['item_image']['tmp_name']);
             //Warning: getimagesize() expects parameter 1 to be string, array given in
@@ -156,7 +154,7 @@ class  person extends config{
 
             }elseif($error==0){
 
-                //check file size (e.g No images will accepted avobe 500kb)
+                //check file size (e.g No images will accepted)
                 if($file["item_image"]["size"]>50000000){
                     $error=1;
                     $error_message="Image is too big";
@@ -182,6 +180,40 @@ class  person extends config{
             }
         }
     }
+
+    //display item table
+    public function displayItemeTable(){
+        $sql="SELECT * FROM `items` INNER JOIN `categories` ON items.category_id=categories.category_id ORDER BY 'category_name'";
+        // want to sort by category_name but not working
+        $result=$this->conn->query($sql);
+        $rows=array();
+        
+        if($result->num_rows>0){
+            while($displayItem=$result->fetch_assoc()){
+                array_push($rows,$displayItem);
+            }
+            return $rows;
+        }else{
+            return false;
+        }
+    }
+
+    //update item
+
+    //delete item
+    public function deleteItem($item_id){
+        $sql="DELETE FROM items WHERE item_id='$item_id'";
+        $result=$this->conn->query($sql);
+
+        if($result==true){
+            header("location:items.php");
+
+        }else{
+            echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+
+        }
+    }
+
 
     // EVENT
     // add event into db

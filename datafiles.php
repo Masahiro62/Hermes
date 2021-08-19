@@ -88,5 +88,9 @@ if(isset($_POST['register'])){
 
     $personObj->addItem($item_name,$item_description,$item_stocks,$item_price,$publish_date,$category_id,$item_image);
 
+}elseif(isset($_GET['operation_item'])){
+    // delete item
+    $item_id=$_GET['item_id'];
+    $personObj->deleteItem($item_id);
 }
 ?>

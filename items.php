@@ -91,25 +91,68 @@
                     <div class="col-md-12 mt-5">
                         <h3 class="text-center">Item Table</h3>
                         <table class="table table-hover">
-                            <thead>
+                            <thead class="text-center">
                                 <th>NAME</th>
                                 <th>STOCKs</th>
                                 <th>PRICE</th>
-                                <th>CATEGORY </th>
+                                <th>CATEGORY NAME </th>
                                 <th colspan="2"></th>
                             </thead>
                             <tbody>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                   <td class="text-center"><a href="update_item.php" class="btn btn-warning">UPDATE</a></td>
-                                <td><a href="delete_item.php" class="btn btn-danger">DELETE</a></td>
+                                <?php 
+                                    $displayItem=$personObj->displayItemeTable();
+                                    if($displayItem==false){
+                                ?>
+                                    <td colspan="6" class="text-danger">No Record Found</td>
+                                <?php
+                                    }else{
+                                        foreach($displayItem as $Item){
+                                ?>
+                                <tr class="text-center">
+                                    <td><?php echo $Item['item_name'];?></td>
+                                    <td><?php echo $Item['item_stocks'];?></td>
+                                    <td><?php echo $Item['item_price'];?></td>
+                                    <td><?php echo $Item['category_name'];?></td>
+                                    <td class="text-end"><a href="update_item.php?item_id=<?php echo $Item['item_id'];?>" class="btn btn-warning">UPDATE</a></td>
+                                    <td class="text-start">
+                                        <!-- button trigger -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_item">
+                                            DELETE
+                                        </button>
+                                        <!-- modal -->
+                                        <div class="modal fade" id="modalId_item" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">DELETE</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" value="">
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <P>Are you sure to delete " <strong><?php echo $Item['item_name'];?> </strong>" ?</P>
+                                                        <!-- every button is going to be the top-->
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form action="" method="GET">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <input type="number" hidden name="item_id" hidden value="<?php echo $Item['item_id'];?>">
+                                                            <input type="submit" name="operation_item" value="DELETE" class="btn btn-danger">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </td>
+                                </tr>
+                                <?php 
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </section>
         </div>
       </main>
