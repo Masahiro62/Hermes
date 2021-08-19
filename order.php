@@ -1,3 +1,6 @@
+<?php
+    include 'datafiles.php';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,11 +35,24 @@
                             <th>USER ID</th>
                         </thead>
                         <tbody>
+                            <?php
+                                $displayOrder=$personObj->displayOrderTable();
+                                if($displayOrder==false){
+                            ?>
+                                <td colspan="3" class="text-danger">No Record Found</td>
+                            <?php
+                                }else{
+                                foreach($displayOrder as $Order){
+                            ?>
                             <tr>
-                                <td>xxxx</td>
-                                <td>yyyy</td>
-                                <td>zzzz</td>
+                                <td><?php echo $Order['order_id'];?></td>
+                                <td><?php echo $Order['item_id'];?></td>
+                                <td><?php echo $Order['user_id'];?></td>
                             </tr>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
