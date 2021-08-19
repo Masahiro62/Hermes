@@ -65,7 +65,7 @@ class  person extends config{
 
         // fetch the categorty info and display
     public function displayCateTable(){
-        $sql="SELECT * FROM categories";
+        $sql="SELECT * FROM categories ORDER BY `category_name`";
         $result=$this->conn->query($sql);
         $rows=array();
         
@@ -145,9 +145,9 @@ class  person extends config{
             $target_file=$target_directory.$fileName;
         
             //var_dump($file['name']);//null when i use ['name']
-
+            //var_dump($file);
             //check if the file is an actual image
-            $imageSize=getimagesize($file['item_image']['name']);
+            $imageSize=getimagesize($file['item_image']['tmp_name']);
             //Warning: getimagesize() expects parameter 1 to be string, array given in
 
             if($imageSize==false){
@@ -163,7 +163,7 @@ class  person extends config{
 
                 }else{
                     //upload and move to the our uploads/
-                    move_uploaded_file($file['item_image']['name'],$target_file);
+                    move_uploaded_file($file['item_image']['tmp_name'],$target_file);
 
                     //update db pic and item info
                     $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `publish_date`,`category_id`,`item_image`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$publish_date','$category_id','$fileName')";
@@ -178,7 +178,6 @@ class  person extends config{
                     }
                 }
             }else{
-                // have to ask this part to fix the message
                 header("location:items.php?success=0&message=$error_message");
             }
         }
@@ -189,13 +188,13 @@ class  person extends config{
     public function addEvent($event_title,$event_detail,$event_date){
 
         // check the name of the event on db
-        $check_sql="SELECT*FROM `events` WHERE event_title='$event_title'";
-        $result_check=$this->conn->query($check_sql);
+        // $check_sql="SELECT*FROM `events` WHERE event_title='$event_title'";
+        // $result_check=$this->conn->query($check_sql);
 
-        if($result_check->num_rows>0){
-            echo "<div class='alert alert-danger text-center'>The event is already in the table.</div>";
+        // if($result_check->num_rows>0){
+        //     echo "<div class='alert alert-danger text-center'>The event is already in the table.</div>";
 
-        }else{
+        // }else{
             // insert into db
             $sql="INSERT INTO `events`(`event_title`,`event_detail`,`event_date`) VALUES('$event_title','$event_detail','$event_date')";
             $result=$this->conn->query($sql);
@@ -204,14 +203,45 @@ class  person extends config{
             header('location:events.php?message=the event was successfully created');
             }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
-            }   
+            // }   
         }
     }
 
+    //check the specific event_id
+    public function chooseEve($event_id){
+        $sql="SELECT * FROM events WHERE event_id='$event_id'";
+        $result=$this->conn->query($sql);
+        if($result==true){
+            return $result->fetch_assoc();
+        }
+    }
+
+    // edit and update the event
+    public function editEve($u_event_title,$u_event_date,$u_event_detail,$event_id){
+        //check if it is same event or not
+        // $check_sql="SELECT * FROM `events` WHERE `event_name`='$u_event_title'";
+        // $result_check=$this->conn->query($check_sql);
+
+        // if($result_check->num_rows>0){
+        //     echo "<div class='alert alert-danger text-center'>The event is already in the table.</div>";
+
+        // }else{
+            // update the data
+            $sql="UPDATE `events` SET `event_title`='$u_event_title',`event_detail`='$u_event_detail',`event_date`='$u_event_date' WHERE `event_id`='$event_id'";
+            $result=$this->conn->query($sql);
+
+            if($result==true){
+                header('location:events.php?message=the event was successfully modified');
+
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+            }
+        // }
+    }
 
     // fetch the events info and display
     public function dispalyEventsTable(){
-        $sql="SELECT * FROM `events`";
+        $sql="SELECT * FROM `events` ORDER BY `event_date` asc";
         $result=$this->conn->query($sql);
         $rows=array();
 
@@ -231,7 +261,7 @@ class  person extends config{
         $sql="DELETE FROM `events` WHERE event_id = '$event_id'";
 
         if($this->conn->query($sql)){
-            header("location:adminDashboard.php");
+            header("location:events.php");
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
         }

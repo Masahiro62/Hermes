@@ -1,5 +1,6 @@
 <?php 
     include 'datafiles.php';
+    $displayEve=$personObj->chooseEve($event_id);
 
 ?>
 
