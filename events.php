@@ -48,7 +48,7 @@
                 <h3 class="text-center">EVENT LIST</h3>
                 <table class="table table-hover w-100 mx-auto"> 
                     <thead class="table-dark">
-                            <th>ID</th>
+                            <!-- <th>ID</th> -->
                             <th>DATE</th>
                             <th>TITLE</th>
                             <th>DETAIL</th>
@@ -59,18 +59,45 @@
                             $displayEvent=$personObj->dispalyEventsTable();
                             if($displayEvent==false){
                         ?>
-                        <td colspan="6" class="text-danger">No Record Found</td>
+                        <td colspan="5" class="text-danger">No Record Found</td>
                         <?php
                             }else{
                                 foreach($displayEvent as $Eve){
                         ?>
                         <tr>
-                            <td><?php echo $Eve['event_id']?></td>
+                            <!-- <td><?php echo $Eve['event_id']?></td> -->
                             <td><?php echo $Eve['event_date']?></td>
                             <td><?php echo $Eve['event_title']?></td>
                             <td><?php echo $Eve['event_detail']?></td>
-                            <td><a href="" class="btn btn-success ">EDIT</a></td>
-                            <td><a href="" class="btn btn-danger ">DELETE</a></td>
+                            <td><a href="edit_event.php?event_id=<?php echo $Eve['event_id']?>" class="btn btn-success ps-4 pe-4">EDIT</a></td>
+                            <td>
+                                    <!-- button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_event">
+                                        DELETE
+                                    </button>
+                                    
+                                    <!-- modal -->
+                                    <div class="modal fade" id="modalId_event" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">DELETE</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" value="">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <P>Are you sure to delete " <strong><?php echo $Eve['event_title'];?> </strong>" ?</P>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="" method="GET">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <input type="number" hidden name="event_id" hidden value="<?php echo $Eve['event_id'];?>">
+                                                        <input type="submit" name="operation_event" value="DELETE" class="btn btn-danger">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
                         </tr>
                         <?php
                             }

@@ -60,6 +60,12 @@ if(isset($_POST['register'])){
     
     $personObj->addEvent($event_title,$event_detail,$event_date);
 
+}elseif(isset($_GET['operation_event'])){
+    // delete event 
+    $event_id=$_GET['event_id'];
+    $personObj->deleteEve($event_id);
+
+
 }elseif(isset($_POST['add_item'])){
     //add item
     $item_name=$_POST['item_name'];

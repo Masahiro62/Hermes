@@ -226,8 +226,19 @@ class  person extends config{
 
     }
 
+    //delete the event
+    public function deleteEve($event_id){
+        $sql="DELETE FROM `events` WHERE event_id = '$event_id'";
 
-    // fetch the deliveries info 
+        if($this->conn->query($sql)){
+            header("location:adminDashboard.php");
+        }else{
+            echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+        }
+    }
+
+
+    // fetch the deliveries info from db
     public function displayDeliveryTable(){
         $sql="SELECT * FROM `deliveries`";
         $result=$this->conn->query($sql);
@@ -243,7 +254,21 @@ class  person extends config{
         }
     }
 
+    //fetch the orders info from db
+    public function displayOrderTable(){
+        $sql="SELECT * FROM `orders`";
+        $result=$this->conn->query($sql);
+        $rows=array();
 
+        if($result->num_rows>0){
+            while($displayOrder=$result->fetch_assoc()){
+                $rows[]=$displayOrder;
+            }
+            return $rows;
+        }else{
+            return false;
+        }
+    }
 }
 
 
