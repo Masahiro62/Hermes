@@ -227,6 +227,21 @@ class  person extends config{
     }
 
 
+    // fetch the deliveries info 
+    public function displayDeliveryTable(){
+        $sql="SELECT * FROM `deliveries`";
+        $result=$this->conn->query($sql);
+        $rows=array();
+
+        if($result->num_rows>0){
+            while($displayDeli=$result->fetch_assoc()){
+                $rows[]=$displayDeli;
+            }
+            return $rows;
+        }else{
+            return false;
+        }
+    }
 
 
 }

@@ -1,3 +1,6 @@
+<?php 
+  include 'datafiles.php';
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,8 +33,22 @@
                             <th>USER ID</th>
                         </thead>
                         <tbody>
-                            <td>xxxx</td>
-                            <td>yyyy</td>
+                            <?php
+                              $displayDeli=$personObj->displayDeliveryTable();
+                              if($displayDeli==false){
+                            ?>
+
+                              <td colspan="2" class="text-danger">No Record Found</td>
+                            <?php
+                              }else{
+                                foreach($displayDeli as $Deli){
+                            ?>
+                            <td><?php echo $Deli['delivery_id'];?></td>
+                            <td><?php echo $Deli['user_id'];?></td>
+                            <?php
+                                }
+                              }
+                            ?>
                         </tbody>
                     </table>
                 </div>
