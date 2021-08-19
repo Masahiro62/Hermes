@@ -38,7 +38,7 @@
                 <h3 class="text-center">Category Table</h3>
                 <table class="table table-hover w-50 mx-auto">
                     <thead class=" table-dark">
-                        <th>ID</th>
+                        <th></th>
                         <th>NAME</th>
                         <th colspan="2"></th>
                     </thead>
@@ -56,7 +56,7 @@
                                            
                         ?>
                         <tr>
-                            <td><?php echo $Cate['category_id'];?></td>
+                            <td></td>
                             <td><?php echo $Cate['category_name'];?></td>
                             <td class="text-center"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
                             <td>
