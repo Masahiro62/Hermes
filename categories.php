@@ -38,8 +38,7 @@
                 <h3 class="text-center">Category Table</h3>
                 <table class="table table-hover w-50 mx-auto">
                     <thead class=" table-dark">
-                        <th></th>
-                        <th>NAME</th>
+                        <th class="text-center">NAME</th>
                         <th colspan="2"></th>
                     </thead>
 
@@ -55,10 +54,9 @@
                                 foreach($displayCate as $Cate){
                                            
                         ?>
-                        <tr>
-                            <td></td>
-                            <td><?php echo $Cate['category_name'];?></td>
-                            <td class="text-center"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
+                        <tr class="">
+                            <td class="text-center"><?php echo $Cate['category_name'];?></td>
+                            <td class="text-end"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
                             <td>
                                 <!-- button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_category">
