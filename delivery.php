@@ -43,11 +43,13 @@
                               }else{
                                 foreach($displayDeli as $Deli){
                             ?>
-                            <td><?php echo $Deli['delivery_id'];?></td>
-                            <td><?php echo $Deli['user_id'];?></td>
+                            <tr>
+                              <td><?php echo $Deli['delivery_id'];?></td>
+                              <td><?php echo $Deli['user_id'];?></td>
+                            </tr>
                             <?php
-                                }
-                              }
+                                  }
+                               }
                             ?>
                         </tbody>
                     </table>
