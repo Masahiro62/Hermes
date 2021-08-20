@@ -1,6 +1,6 @@
 <?php 
     include 'datafiles.php';
-    $displayEve=$personObj->chooseEve($event_id);
+    //$displayEve=$personObj->chooseEve($event_id);
 
 ?>
 
@@ -67,18 +67,18 @@
                         ?>
                         <tr>
                             <!-- <td><?php echo $Eve['event_id']?></td> -->
-                            <td><?php echo $Eve['event_date']?></td>
-                            <td><?php echo $Eve['event_title']?></td>
-                            <td><?php echo $Eve['event_detail']?></td>
-                            <td><a href="edit_event.php?event_id=<?php echo $Eve['event_id']?>" class="btn btn-success ps-4 pe-4">EDIT</a></td>
+                            <td><?php echo $Eve['event_date'];?></td>
+                            <td><?php echo $Eve['event_title'];?></td>
+                            <td><?php echo $Eve['event_detail'];?></td>
+                            <td><a href="edit_event.php?event_id=<?php echo $Eve['event_id'];?>" class="btn btn-success ps-4 pe-4">EDIT</a></td>
                             <td>
                                     <!-- button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_event">
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?php echo $Eve['event_id'];?>_event">
                                         DELETE
                                     </button>
                                     
                                     <!-- modal -->
-                                    <div class="modal fade" id="modalId_event" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                    <div class="modal fade" id="modal<?php echo $Eve['event_id'];?>_event" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -87,7 +87,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <P>Are you sure to delete " <strong><?php echo $Eve['event_title'];?> </strong>" ?</P>
+                                                <P class="text-center">Are you sure to delete " <strong><?php echo $Eve['event_title'];?> </strong>" ?</P>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="" method="GET">
