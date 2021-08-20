@@ -53,6 +53,7 @@
                                                     }
                                                 }
                                                 ?>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -116,11 +117,11 @@
                                     <td class="text-end"><a href="update_item.php?item_id=<?php echo $Item['item_id'];?>" class="btn btn-warning">UPDATE</a></td>
                                     <td class="text-start">
                                         <!-- button trigger -->
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_item">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?php echo $Item['item_id'];?>_item">
                                             DELETE
                                         </button>
                                         <!-- modal -->
-                                        <div class="modal fade" id="modalId_item" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                        <div class="modal fade" id="modal<?php echo $Item['item_id'];?>_item" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -129,7 +130,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <P>Are you sure to delete " <strong><?php echo $Item['item_name'];?> </strong>" ?</P>
+                                                        <P class="text-center">Are you sure to delete " <strong><?php echo $Item['item_name'];?> </strong>" ?</P>
                                                         <!-- every button is going to be the top-->
                                                     </div>
                                                     <div class="modal-footer">
