@@ -59,12 +59,12 @@
                             <td class="text-end"><a href="update_category.php?category_id=<?php echo $Cate['category_id'];?>" class="btn btn-warning">UPDATE</a></td>
                             <td>
                                 <!-- button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId_category">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal<?php echo $Cate['category_id'];?>_category">
                                     DELETE
                                 </button>
 
                                 <!-- modal-->
-                                <div class="modal fade" id="modalId_category" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                                <div class="modal fade" id="modal<?php echo $Cate['category_id'];?>_category" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -73,7 +73,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <P>Are you sure to delete " <strong><?php echo $Cate['category_name'];?> </strong>" ?</P>
+                                                <P class="text-center">Are you sure to delete " <strong><?php echo $Cate['category_name'];?> </strong>" ?</P>
                                             </div>
                                             <div class="modal-footer">
                                                 <form action="" method="GET">
