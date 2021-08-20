@@ -40,6 +40,10 @@ class  person extends config{
             }else{
                 header("location:adminDashboard.php");
             }
+        }else{
+            echo "<div class='alert alert-danger text-center'>Failed to login. Kindly try it again.</div>";
+            // didnt work well 
+            // want to change 
         }
     }
 
@@ -58,7 +62,7 @@ class  person extends config{
             if($result==TRUE){
                 header("location:categories.php?message=the category was successfuly created");
             }else{
-                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again.</div>";
             }
         }
     }
@@ -117,7 +121,7 @@ class  person extends config{
         $sql="DELETE FROM categories WHERE category_id='$category_id'";
 
         if($this->conn->query($sql)){
-            header("location:categories.php");
+            header("location:categories.php?message=the record was successfully deleted");
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
 
@@ -146,7 +150,6 @@ class  person extends config{
         
             //check if the file is an actual image
             $imageSize=getimagesize($file['item_image']['tmp_name']);
-            //Warning: getimagesize() expects parameter 1 to be string, array given in
 
             if($imageSize==false){
                 $error=1;
@@ -167,7 +170,7 @@ class  person extends config{
                     $sql="INSERT INTO `items`(`item_name`, `item_description`, `item_stocks`, `item_price`, `publish_date`,`category_id`,`item_image`) VALUES ('$item_name','$item_description','$item_stocks','$item_price','$publish_date','$category_id','$fileName')";
                     $result=$this->conn->query($sql);
 
-                    //display message success oe error 
+                    //display message success or error 
                     if($result==TRUE){
                         header("location:items.php?message=the item was successfully created");
 
@@ -183,7 +186,7 @@ class  person extends config{
 
     //display item table
     public function displayItemeTable(){
-        $sql="SELECT * FROM `items` INNER JOIN `categories` ON items.category_id=categories.category_id ORDER BY 'category_name'";
+        $sql="SELECT * FROM `items` INNER JOIN `categories` ON items.category_id=categories.category_id ORDER BY category_name";
         // want to sort by category_name but not working
         $result=$this->conn->query($sql);
         $rows=array();
@@ -197,8 +200,84 @@ class  person extends config{
             return false;
         }
     }
+    // choose specific item
+    public function spacificItem($item_id){
+        $sql="SELECT * FROM items INNER JOIN categories ON items.category_id=categories.category_id WHERE item_id ='$item_id'";
+        $result=$this->conn->query($sql);
+
+        if($result==TRUE){
+            return $result->fetch_assoc();
+            
+        }
+    }
 
     //update item
+    public function updateItem($u_item_name,$u_item_description,$u_item_stocks,$u_item_price,$u_publish_date,$u_category_id,$item_id,$u_item_image,$file){
+        
+        if($_FILES['u_item_image']['tmp_name']==NULL){
+            //update only text
+            $sql_updateWithoutpic="UPDATE `items` SET 
+                                    `item_name`='$u_item_name',`item_description`='$u_item_description',`item_stocks`='$u_item_stocks',`item_price`='$u_item_price',`publish_date`='$u_publish_date',`category_id`='$u_category_id' 
+                                    WHERE item_id='$item_id'";
+            $result_updateWithout=$this->conn->query($sql_updateWithoutpic);
+
+            if($result_updateWithout==true){
+                header("location:items.php?message=the recoprd was successfuly updated");
+            }else{
+                echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+            }
+
+        }else{
+            // before update with pic 
+            // check the pic 
+            $error=0;
+            $error_message="";
+
+            $fileType=strtolower(pathinfo($file['u_item_image']['name'],PATHINFO_EXTENSION));
+            $fileName=date('m-d-y h:i:s a',time()).".".$fileType;
+            $target_directory="uploads/item_pictures/";
+            $target_file=$target_directory.$fileName;
+
+            //check the file is an actual image
+            $imageSize=getimagesize($file['u_item_image']['tmp_name']);
+
+            if($imageSize==false){
+                $error=1;
+                $error_message="The File is not image";
+
+            }elseif($error==0){
+                //check file size (e.g No images will accepted)
+                if($file["u_item_image"]["size"]>50000000){
+                    $error=1;
+                    $error_message="Image is too big";
+
+                }else{
+                    // upload and move to the our uploads/
+                    move_uploaded_file($file['u_item_image']['tmp_name'],$target_file);
+
+                    //update db
+                    $sql_updatewithPic="UPDATE `items` SET 
+                    `item_name`='$u_item_name',`item_description`='$u_item_description',`item_stocks`='$u_item_stocks',`item_price`='$u_item_price',`publish_date`='$u_publish_date',`category_id`='$u_category_id' 
+                    `item_image`='$u_item_image' WHERE item_id='$item_id'";
+                    $result_withPic=$this->conn->query($sql_updatewithPic);
+
+                    // dispaly message success or error 
+                    if($result_withPic==true){
+                        header("location:items.php?message=the item was successfully updated");
+
+                    }else{
+                        echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+                    }
+
+                }
+            }else{
+                header("location:items.php?success=0&message=$error_message");
+            }
+
+
+        }
+
+    }
 
     //delete item
     public function deleteItem($item_id){
@@ -206,7 +285,7 @@ class  person extends config{
         $result=$this->conn->query($sql);
 
         if($result==true){
-            header("location:items.php");
+            header("location:items.php?message=the record was successfully deleted");
 
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
@@ -293,7 +372,7 @@ class  person extends config{
         $sql="DELETE FROM `events` WHERE event_id = '$event_id'";
 
         if($this->conn->query($sql)){
-            header("location:events.php");
+            header("location:events.php?message=the record was successfully deleted");
         }else{
             echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
         }
