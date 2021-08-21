@@ -1,3 +1,7 @@
+<?php
+  include 'datafiles.php';
+?>
+
 <!-- for user -->
 <!doctype html>
 <html lang="en">
@@ -16,81 +20,144 @@
       <?php include 'header.php';?>
     </header>
     <main>
+        <!-- showcase -->
         <section><?php include 'showcase.php';?></section>
 
+        <div class="sticky-top w-100">
+            <a href="#" class="text-dark" style="text-decoration: none;">Top<i class="fas fa-chevron-circle-up text-dark fs-1"></i><a>
+            <a href="" style="text-decoration: none;">Cart<i class="fas fa-cart-plus fs-1"></i></a>
+            
+        </div>
+
+        <!-- contents -->
         <div class="container-fluid border border-dark">
-            <!-- left part -->
-            <div class="border border-danger w-75 float-start">
-                <div class="w-100" style="height: 1500px;">
-                    <section class="border" style="height: 500px;">
-                      NEW ARRIVAL ITEMS
+              
+              
+            <div class="border border-danger w-75 mx-auto mb-5">
+                <!-- <div class="" > -->
+                    <!-- slider -->
+                    <section class="mt-5 mb-5 border border-primary">
+                      <h3 class="text-center mt-5">NEW ARRIVAL ITEM</h3>
                       <br>
-                      put slider
+                      <!-- slider -->
+                      <div id="carouselItem" class="carousel carousel-dark slide w-75 mx-auto mb-5" data-bs-ride="carousel">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselItem" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselItem" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselItem" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">
+                          <img src="assets/image/shopping_woman.png" class="d-block w-100" alt="">
+                          <!-- image or card -->
+                          <div class="carousel-caption d-none d-md-block">
+                            <h3><strong>xxxxx</strong></h3>
+                            <p class="fs-6">Lorem ipsum dolor sit amet.</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                          <img src="assets/image/shopping_woman.png" class="d-block w-100" alt="">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h3 class="text-white">yyyyy</h3>
+                            <p class="fs-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, odio!</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img src="assets/image/shopping_woman.png" class="d-block w-100" alt="">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h3>zzzzz</h3>
+                            <p class="fs-6">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias eligendi molestiae eaque autem!</p>
+                          </div>
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselItem" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselItem" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
                     </section>
 
-                    <section class="border" style="height: 500px;">
-                      BEST SELLERS
-                      <br>
-                      put some pics for showing the output
+                    <section class="border border-warning mb-5" style="height: 500px;">
+                      
+                      <article class="w-75 float-start border border-danger" style="height:500px;">
+                        <h3>gallery</h3>
+                      </article>
+
+                      <article class="w-25 float-end border border-danger" style="height:500px;">
+                          <section class="" style="height: 250px;">
+                            <h5 class="text-center mt-5 pt-5">TODAY</h5>
+                            <div class="mt-3">
+                              <ul>
+                                <li><a href="">DATE & TITLE</a></li>
+                                <!-- click and show the modal -->
+                              </ul>
+                            </div>
+                          </section>
+
+                          <section style="height: 250px;">
+                            <h5 class="text-center">COMMING SOON</h5> 
+                            <div class="mt-3">
+                              <ul>
+                                <li><a href="">DATE & TITLE</a></li>
+                                <!-- click and show the modal -->
+                              </ul>
+                            </div>
+                          </section>
+                        </article>
                     </section>
 
-                    <section class="border" style="height: 500px;">
-                      <h3 class="text-center">ALL ITEMS</h3>
-                      <table class="table table-hover">
-                        <thead>
-                          <th>ITEM ID</th>
+                    <section class="border border-primary" style="height: 500px;">
+                      <h3 class="text-center">ITEM LIST</h3>
+                      <table class="table table-hover w-75 mx-auto">
+                        <thead class="text-center">
                           <th>ITEM NAME</th>
-                          <!-- <th>DETAIL</th> -->
+                          <th>CATEGORY</th>
                           <th>PRICE</th>
                           <th>STOCK</th>
+                          <th></th>
                         </thead>
-                        <tbody>
-                          <td></td>
-                          <td></td>
-                          <!-- <td></td> -->
-                          <td></td>
-                          <td></td>
+                        <tbody class="text-center">
+                          <?php 
+                            $displayItem=$personObj->displayItemeTable();
+                            if($displayItem==false){
+                          ?>
+                            <td colspan="5" class="text-danger">No Record Found</td>
+                          <?php
+                            }else{
+                            foreach($displayItem as $Item){
+                          ?>
+                          <tr>
+                            <td><?php echo $Item['item_name'];?></td>
+                            <td><?php echo $Item['category_name'];?></td>
+                            <td><?php echo $Item['item_price'];?></td>
+                            <td><?php echo $Item['item_stocks'];?></td>
+                            <!-- addc detail buy  -->
+                            <!-- change the buttons to work  -->
+                            <td class="">
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">BUY</a></button>
+                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">ADD CART</a></button>
+                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">DETAIL</a></button>
+                              </div>
+                            </td>
+                          </tr>
+                          <?php 
+                               }
+                            }
+                          ?>
                         </tbody>
                       </table>
                     </section>
-                    
-                </div>
+                <!-- </div> -->
             </div>
-            <!-- right part  -->
-            <aside class="border border-primary w-25 float-end">
-                <div class="w-100" style="height: 1500px;">
-                  <div class="border border-warning w-100" style="height: 100px;">
-                    <form action="" method="get" class="mt-4 mx-auto">
-                      <div class="input-group">
-                        <div class="form-outline">
-                          <input type="search" id="search" form="form-control" placeholder="Search in the site" class="p-2">
-                        </div>
-                        <button type="submit" name="search" class="btn btn-primary">
-                          <i class="fas fa-search"></i>
-</butt>
-                      </div>
-                    </form>
-                  </div>
-                  <article class="w-100 border" style="height: 350px;">
-                    calender
-                  </article>
-
-                  <article class="w-100 border" style="height: 350px;">
-                    news/ivents
-                  </article>
-
-                  <article class="w-100 border" style="height: 350px;">
-                    coming soon
-                  </article>
-                  <article class="w-100 border" style="height: 350px;">
-                    other if there is any 
-                  </article>
-                </div>
-            </aside>
         </div>
     </main>
     <footer>
-        <?php include 'footer.php'?>
+        <?php include 'footer.php';?>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
