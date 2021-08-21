@@ -26,9 +26,9 @@
               <div class="w-50 float-start text-end"><img src="assets/image/logo.png" alt="" style="height: 50px; width:50px;"></div>
               <div class="w-50 float-end"><span class=" text-white fs-2">Hermes</span></div>
             </div>
-            <div class="w-25 text-center">
+            <div class="w-25 text-center ">
               <!-- nav button -->
-              <nav>
+              <nav class="">
                 <div class="dropdown">
                   <button class="btn text-white  mt-3 dropdown-toggle " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                   MENU
@@ -42,7 +42,6 @@
                   </ul>
                 </div>
               </nav>
-              
             </div>
           </div>
       </div>
