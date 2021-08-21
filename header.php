@@ -11,7 +11,6 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
   </head>
   <body>
       <div class="container-fluid">
@@ -27,8 +26,23 @@
               <div class="w-50 float-start text-end"><img src="assets/image/logo.png" alt="" style="height: 50px; width:50px;"></div>
               <div class="w-50 float-end"><span class=" text-white fs-2">Hermes</span></div>
             </div>
-            <div class="w-25 border border-danger">
-              nav make bar like 3 lines 
+            <div class="w-25 text-center">
+              <!-- nav button -->
+              <nav>
+                <div class="dropdown">
+                  <button class="btn text-white  mt-3 dropdown-toggle " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  MENU
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item active" href="profile.php">USER INFOMATION</a></li>
+                    <li><a class="dropdown-item" href="order_history.php">ORDER HISTORY</a></li>
+                    <li><a class="dropdown-item" href="contact.php">CONTACT</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="logout.php">LOGOUT</a></li>
+                  </ul>
+                </div>
+              </nav>
+              
             </div>
           </div>
       </div>

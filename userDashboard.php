@@ -13,9 +13,11 @@
   </head>
   <body>
     <header>
-      <?php include 'header_userdashboard.php';?>
+      <?php include 'header.php';?>
     </header>
     <main>
+        <section><?php include 'showcase.php';?></section>
+
         <div class="container-fluid border border-dark">
             <!-- left part -->
             <div class="border border-danger w-75 float-start">

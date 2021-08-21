@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>header</title>
-    <link rel="stylesheet" href="css/header_dashboard.css">
+    <link rel="stylesheet" href="css/showcase.css">
 </head>
 <body>
     <main class="header-main">
-        <div class="header">
-            <?php include 'header.php';?>
-        </div>
         <div class="center-box">
             <p>
                 <strong>Enjoy your shopping and have a wonderful time!</strong>
