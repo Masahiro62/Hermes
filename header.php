@@ -34,8 +34,8 @@
                   MENU
                   </button>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item active" href="profile.php">USER INFOMATION</a></li>
-                    <li><a class="dropdown-item" href="order_history.php">ORDER HISTORY</a></li>
+                    <li><a class="dropdown-item " href="profile.php">USER INFOMATION</a></li>
+                    <li><a class="dropdown-item " href="order_history.php">ORDER HISTORY</a></li>
                     <li><a class="dropdown-item" href="contact.php">CONTACT</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">LOGOUT</a></li>
