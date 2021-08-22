@@ -223,6 +223,7 @@ class  person extends config{
 
             if($result_updateWithout==true){
                 header("location:items.php?message=the recoprd was successfuly updated");
+
             }else{
                 echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
             }
@@ -267,16 +268,14 @@ class  person extends config{
 
                     }else{
                         echo "<div class='alert alert-danger text-center'>Error occurd.Try it again. </div>";
+                        
                     }
-
                 }
             }else{
                 header("location:items.php?success=0&message=$error_message");
+
             }
-
-
         }
-
     }
 
     //delete item

@@ -91,14 +91,15 @@ if(isset($_POST['register'])){
 }elseif(isset($_GET['operation_item'])){
     // delete item
     $item_id=$_GET['item_id'];
+
     $personObj->deleteItem($item_id);
     
 }elseif(isset($_POST['update_item'])){
     // update item
-    var_dump($_POST);
-    var_dump($_FILES);
+    // var_dump($_POST);
+    // var_dump($_FILES);
     //var_dump($item_id);
-    $u_item_name=$_POST['u_item_name'];
+    $u_item_name=$_POST['u_item_name"'];
     $u_item_description=$_POST['u_item_description'];
     $u_item_stocks=$_POST['u_item_stocks'];
     $u_item_price=$_POST['u_item_price'];
@@ -107,6 +108,8 @@ if(isset($_POST['register'])){
     $item_id=$_POST['item_id'];
     $u_item_image=$_FILES['u_item_image'];
     $file=$_FILES;
+
     $personObj->updateItem($u_item_name,$u_item_description,$u_item_stocks,$u_item_price,$u_publish_date,$u_category_id,$item_id,$u_item_image,$file);
+    // not working  sql is working but here not. WHY?
 }
 ?>

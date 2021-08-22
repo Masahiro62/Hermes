@@ -41,7 +41,7 @@
                 <div class="card-header text-center">
                     <h2>UPDATE ITEM</h2>
                 </div>
-                <div class="card-body">
+                <div class=" ">
                     <table class="table w-75 mx-auto">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- <thead class="table-dark">
@@ -85,7 +85,7 @@
                                 </tr>
                                 <tr>
                                     <td>PRICE:</td>
-                                    <td><input type="number" name="u_item_price" value="<?php echo $Item['item_price'];?>" id="" class="form-control"></td>
+                                    <td><input type="number" name="u_item_price" value="<?php echo $Item['item_price'];?>" id="" class="form-control" step="any"></td>
                                 </tr>
                                 <tr>
                                     <td>STOCK:</td>
