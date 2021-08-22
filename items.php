@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <td>PRICE:</td>
-                                        <td><input type="number" name="item_price" id="" class="form-control"></td>
+                                        <td><input type="number" name="item_price" id="" class="form-control" step="any"></td>
                                     </tr>
                                     <tr>
                                         <td>STOCK:</td>
