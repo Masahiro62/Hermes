@@ -70,7 +70,8 @@
                                     </tr>
                                     <tr>
                                         <td>DESCRIPTION:</td>
-                                        <td><input type="text" name="item_description" id="" class="form-control"></td>
+                                           <td><textarea name="item_description" id="" cols="30" rows="10" maxlength="255" class="form-control"></textarea>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>ITEM IMAGE</td>
