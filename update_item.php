@@ -1,7 +1,7 @@
 <?php
     include 'datafiles.php';
     $item_id=$_GET['item_id'];
-    $Item=$personObj->spacificItem($item_id);
+    $Item=$personObj->specificItem($item_id);
 
     // for pic
     $directory='uploads/item_pictures/';
@@ -97,13 +97,16 @@
                                 </tr>
                                 <tr>
                                     <td>DESCRIPTION:</td>
-                                    <td><input type="text" name="u_item_description" value="<?php echo $Item['item_description'];?>" id="" class="form-control"></td>
+                                    <td>
+                                        <textarea name="u_item_description" id="" value="<?php echo $Item['item_description'];?>" cols="30" rows="10" maxlength="255" class="form-control"></textarea>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>ITEM IMAGE</td>
                                     <td><input type="file" name="u_item_image" id="" class="form-control" accept="image/png,image/jpeg,image/jpg"></td>
                                 </tr>
                                 <tr class="">
+                                    <input type="text" hidden name='item_id' value="<?php echo $Item['item_id'];?>">
                                     <td colspan="2" class="text-center"><input type="submit" value="UPDATE" name="update_item" class="btn btn-warning w-50 mt-3"></td>
                                 </tr>
                             </tbody>
