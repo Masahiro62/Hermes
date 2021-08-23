@@ -34,8 +34,8 @@
                   MENU
                   </button>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item " href="profile.php">USER INFOMATION</a></li>
-                    <li><a class="dropdown-item " href="order_history.php">ORDER HISTORY</a></li>
+                    <li><a class="dropdown-item " href="profile.php?user_id=<?php echo $_SESSION['user_id'] ;?>">USER INFOMATION</a></li>
+                    <li><a class="dropdown-item " href="order_history.php?user_id=<?php echo $_SESSION['user_id'] ;?>">ORDER HISTORY</a></li>
                     <li><a class="dropdown-item" href="contact.php">CONTACT</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout.php">LOGOUT</a></li>
