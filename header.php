@@ -26,7 +26,7 @@
               <div class="w-50 float-start text-end"><img src="assets/image/logo.png" alt="" style="height: 50px; width:50px;"></div>
               <div class="w-50 float-end"><span class=" text-white fs-2">Hermes</span></div>
             </div>
-            <div class="w-25 text-center mt-3">
+            <div class="w-25 text-center">
               <!-- nav button -->
               <nav class="">
                 <div class="dropdown">
