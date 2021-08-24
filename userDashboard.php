@@ -13,7 +13,11 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <style>
+    main{
+      background-size: contain;
+    }
+    </style>
   </head>
   <body>
     <header>
@@ -83,8 +87,14 @@
 
                     <section class="border border-warning mb-5" style="height: 500px;">
                       
-                      <article class="w-75 float-start border border-danger" style="height:500px;">
-                        <h3>gallery</h3>
+                      <article class="w-75 float-start border border-danger" 
+                                style="height:500px; background-image:url(assets/image/gallery.jpg); 
+                                        background-position: center center; background-size: cover; background-repeat:no-repeat;">
+                        <button class="btn btn-secondary" style="left: 35%; margin-top:250px; ">
+                          <a href="" class="text-white" style="text-decoration: none;">
+                            EXPLORE MORE?
+                          </a>
+                        </button>
                       </article>
 
                       <article class="w-25 float-end border border-danger" style="height:500px;">
@@ -110,44 +120,51 @@
                         </article>
                     </section>
 
-                    <section class="border border-primary" style="height: 500px;">
+                    <section class="border border-primary" >
                       <h3 class="text-center">ITEM LIST</h3>
-                      <table class="table table-hover w-75 mx-auto">
+                      <table class="table table-hover w-100 mx-auto">
                         <thead class="text-center">
+                          <th></th>
                           <th>ITEM NAME</th>
                           <th>CATEGORY</th>
                           <th>PRICE</th>
                           <th>STOCK</th>
+                          <th>DESCRIPTION</th>
                           <th></th>
                         </thead>
                         <tbody class="text-center">
                           <?php 
                             $displayItem=$personObj->displayItemeTable();
+                            
                             if($displayItem==false){
                           ?>
                             <td colspan="5" class="text-danger">No Record Found</td>
                           <?php
                             }else{
                             foreach($displayItem as $Item){
+                                    // for pic
+                                  $directory='uploads/item_pictures/';
+                                  $image=$Item['item_image'];
+                                  $src=$directory.$image;
+
                           ?>
                           <tr>
+                            <td><img src="<?php echo $src;?>" alt="" style="height: 100px;"></td>
                             <td><?php echo $Item['item_name'];?></td>
                             <td><?php echo $Item['category_name'];?></td>
                             <td><?php echo $Item['item_price'];?></td>
                             <td><?php echo $Item['item_stocks'];?></td>
-                            <!-- addc detail buy  -->
-                            <!-- change the buttons to work  -->
+                            <td><?php echo $Item['item_description'];?></td>
                             <td class="">
                               <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">BUY</a></button>
-                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">ADD CART</a></button>
-                                <button type="button" class="btn btn-outline-primary"><a href="" class="text-dark" style="text-decoration: none;">DETAIL</a></button>
-                              </div>
+                                <button type="button" class="btn btn-outline-info"><a href="buy_item.php?item_id=<?php echo $Item['item_id'];?>" class="text-dark" style="text-decoration: none;">BUY</a></button>
+                                <button type="button" class="btn btn-outline-warning"><a href="cart_page.php" class="text-dark" style="text-decoration: none;">ADD CART</a></button>
                             </td>
                           </tr>
                           <?php 
                                }
                             }
+                            
                           ?>
                         </tbody>
                       </table>
