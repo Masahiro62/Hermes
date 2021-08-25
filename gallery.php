@@ -12,6 +12,12 @@
   </head>
   <body>
       <head><?php include 'header.php';?></head>
+
+        <!-- back to dashboarde -->
+        <a href="userDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
+        <!-- sticky button -->
+        <a href="#" class="text-dark float-end sticky-top" style="text-decoration: none;">Top<i class="fas fa-chevron-circle-up text-dark fs-1"></i><a>
+
       <main class="clearfix mb-5">
         <div class="container-fluid">
         <?php
