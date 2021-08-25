@@ -27,7 +27,6 @@
 
       <!-- back to dashboarde -->
       <a href="userDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-      <div class="container-fluid">
 
       <main>
         <div class="container-fluid">
@@ -98,14 +97,15 @@
                         </tr>
                         <tr>
                             <td><span class="">TOTAL:</span></td>
-                            <td><?php echo number_format($cal_price,2)?></td>
+                            <td><?php echo number_format($cal_price,2);?></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-end">
                                 <form action="" method="POST">
-                                    <input type="number" name="buy_item" value="<?php echo $_POST['quantity']?>" id="" hidden >
+                                    <input type="number" name="item_id" value="<?php echo $item_id;?>" hidden >
+                                    <input type="number" name="quantity" value="<?php echo $_POST['quantity']?>" id="" hidden >
                                     <input type="number" name="item_price" value="<?php echo $_POST['item_price']?>" id="" hidden>
-                                    <!-- <input type="number" name="" value="<?php echo $_POST['item_stock']?>" id="" hidden> -->
+                                    <input type="number" name="gross" value="<?php echo number_format($cal_price,2);?>" hidden>
                                     <input type="text" name="user_id" value="<?php echo $_SESSION['user_id']?>" hidden>
                                     <input type="submit" name="order_item" value="BUY" class="btn btn-info" >
                                 </form>
