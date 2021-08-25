@@ -1,6 +1,3 @@
-<?php 
-  include 'datafiles.php';
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,9 +12,10 @@
   </head>
   <body>
       <header><?php include 'header.php';?></header>
+      <?php include 'datafiles.php';?>
         <!-- back to dashboarde -->
         <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-
+      
       <!-- just delivery list  -->
       <main>
         <div class="container-fluid">
@@ -29,7 +27,7 @@
                     <table class="table table-hover">
                         <thead class="table-dark">
                             <th>DELIVERY ID</th>
-                            <th>USER ID</th>
+                            <th>FULLNAME(USERNAME)</th>
                             <th>STATUS</th>
                             <th></th>
                         </thead>
@@ -46,16 +44,36 @@
                             ?>
                             <tr>
                               <td><?php echo $Deli['delivery_id'];?></td>
-                              <td><?php echo $Deli['user_id'];?></td>
+                              <td><?php echo $Deli['fullname'];?> (<?php echo $Deli['username'];?>)</td>
                               <form action="" method="POST">
+                                  <input type="text" name="delivery_id" value="<?php echo $Deli['delivery_id'];?>" hidden>
                                   <td>
-                                    <select name="status" id="status" class="form-control">
-                                      <option value="pedding" selected>pending</option>
+                                    <select name="u_status" id="status" class="form-control">
+                                      <option value="<?php echo $Deli['delivery_status'];?>" selected><?php echo $Deli['delivery_status'];?></option>
+                                      <?php 
+                                        if($Deli['delivery_status']=="pending"){
+                                      ?>
+                                        <option value="deliverying">delivering</option>
+                                        <option value="delivered">delivered</option>
+                                      <?php
+                                        }elseif($Deli['delivery_status']=="deliverying"){
+                                      ?>
+                                        <option value="pending">pending</option>
+                                        <option value="delivered">delivered</option>
+                                      <?php
+                                        }else{
+                                      ?>
+                                        <option value="pending">pending</option>
                                       <option value="deliverying">delivering</option>
-                                      <option value="delivered">delivered</option>
+                                      <?php
+                                        }
+                                      ?>
+                                      <!-- <option value="pedding">pending</option>
+                                      <option value="deliverying">delivering</option>
+                                      <option value="delivered">delivered</option> -->
                                     </select>
                                   </td>
-                                  <td><input type="submit" name="change_status" value="CHANGE" class="form-control"></td>
+                                  <td class=""><input type="submit" name="change_status" value="CHANGE" class="form-control btn btn-warning" ></td>
                               </form>
                             </tr>
                             <?php
