@@ -18,7 +18,6 @@
 
       <!-- back to dashboarde -->
       <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-      <div class="container-fluid">
 
       <main>
         <!-- order list and just show the table nobody can not change except changeing db -->
@@ -33,6 +32,7 @@
                             <th>ORDER ID</th>
                             <th>ITEM ID</th>
                             <th>USER ID</th>
+                            <th>GLOSS</th>
                         </thead>
                         <tbody>
                             <?php
@@ -48,6 +48,7 @@
                                 <td><?php echo $Order['order_id'];?></td>
                                 <td><?php echo $Order['item_id'];?></td>
                                 <td><?php echo $Order['user_id'];?></td>
+                                <td>
                             </tr>
                             <?php
                                     }
