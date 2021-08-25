@@ -18,6 +18,9 @@
   </head>
   <body>
       <header><?php include 'header.php';?></header>
+        <!-- back to dashboarde -->
+        <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
+
       <main>
         <div class="container-fluid">
             <div class="card w-50 mx-auto mt-5 mb-5">
