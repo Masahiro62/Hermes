@@ -17,7 +17,6 @@
       <header><?php include 'header.php';?></header>
         <!-- back to dashboarde -->
         <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-        <div class="container-fluid">
 
       <!-- just delivery list  -->
       <main>
@@ -31,6 +30,8 @@
                         <thead class="table-dark">
                             <th>DELIVERY ID</th>
                             <th>USER ID</th>
+                            <th>STATUS</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             <?php
@@ -38,7 +39,7 @@
                               if($displayDeli==false){
                             ?>
 
-                              <td colspan="2" class="text-danger">No Record Found</td>
+                              <td colspan="4" class="text-danger">No Record Found</td>
                             <?php
                               }else{
                                 foreach($displayDeli as $Deli){
@@ -46,6 +47,16 @@
                             <tr>
                               <td><?php echo $Deli['delivery_id'];?></td>
                               <td><?php echo $Deli['user_id'];?></td>
+                              <form action="" method="POST">
+                                  <td>
+                                    <select name="status" id="status" class="form-control">
+                                      <option value="pedding" selected>pending</option>
+                                      <option value="deliverying">delivering</option>
+                                      <option value="delivered">delivered</option>
+                                    </select>
+                                  </td>
+                                  <td><input type="submit" name="change_status" value="CHANGE" class="form-control"></td>
+                              </form>
                             </tr>
                             <?php
                                   }
