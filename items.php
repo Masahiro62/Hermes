@@ -94,6 +94,7 @@
                         <h3 class="text-center">Item Table</h3>
                         <table class="table table-hover">
                             <thead class="text-center">
+                                <th></th>
                                 <th>NAME</th>
                                 <th>STOCKs</th>
                                 <th>PRICE</th>
@@ -109,8 +110,14 @@
                                 <?php
                                     }else{
                                         foreach($displayItem as $Item){
+                                    // for pic
+                                    $directory='uploads/item_pictures/';
+                                    $image=$Item['item_image'];
+                                    $src=$directory.$image;
+
                                 ?>
                                 <tr class="text-center">
+                                    <td><img src="<?php echo $src?>" alt="image of <?php echo $Item['item_name'];?>" style="height: 100px;"></td>
                                     <td><?php echo $Item['item_name'];?></td>
                                     <td><?php echo $Item['item_stocks'];?></td>
                                     <td><?php echo $Item['item_price'];?></td>
