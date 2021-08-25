@@ -30,8 +30,8 @@
                     <table class="table table-hover">
                         <thead class="table-dark">
                             <th>ORDER ID</th>
-                            <th>ITEM ID</th>
-                            <th>USER ID</th>
+                            <th>ITEM NAME</th>
+                            <th>FULLNAME(USERNAME)</th>
                             <th>GLOSS</th>
                         </thead>
                         <tbody>
@@ -42,13 +42,13 @@
                                 <td colspan="3" class="text-danger">No Record Found</td>
                             <?php
                                 }else{
-                                foreach($displayOrder as $Order){
+                                foreach($displayOrder as $Order ){
                             ?>
                             <tr>
                                 <td><?php echo $Order['order_id'];?></td>
-                                <td><?php echo $Order['item_id'];?></td>
-                                <td><?php echo $Order['user_id'];?></td>
-                                <td>
+                                <td><?php echo $Order['item_name'];?></td>
+                                <td><?php echo $Order['fullname'];?> (<?php echo $Order['username'];?>)</td>
+                                <td><?php echo $Order['gross'];?></td>
                             </tr>
                             <?php
                                     }
