@@ -22,7 +22,21 @@
         <a href="categories.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
 
         <!-- update category -->
-        <div class="container">
+        <div class="container-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mx-auto mt-5 mb-5">
                 <div class="card-header text-center">
                     <h2>UPDATE CATEGORY</h2>
