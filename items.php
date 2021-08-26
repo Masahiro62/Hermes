@@ -98,6 +98,7 @@
                                 <th>STOCKs</th>
                                 <th>PRICE</th>
                                 <th>CATEGORY NAME </th>
+                                <th>PUBLISH DATE</th>
                                 <th colspan="2"></th>
                             </thead>
                             <tbody>
@@ -121,6 +122,7 @@
                                     <td><?php echo $Item['item_stocks'];?></td>
                                     <td><?php echo $Item['item_price'];?></td>
                                     <td><?php echo $Item['category_name'];?></td>
+                                    <td><?php echo $Item['publish_date'];?></td>
                                     <td class="text-end"><a href="update_item.php?item_id=<?php echo $Item['item_id'];?>" class="btn btn-warning">UPDATE</a></td>
                                     <td class="text-start">
                                         <!-- button trigger -->
