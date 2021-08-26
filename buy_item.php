@@ -1,3 +1,15 @@
+<?php
+        include 'datafiles.php'; 
+        $item_id=$_GET['item_id'];
+        //$Item=$personObj->picSpecificItem($item_id);
+        $Item=$personObj->specificItem($item_id);
+
+        // for pic
+        $directory='uploads/item_pictures/';
+        $image=$Item['item_image'];
+        $src=$directory.$image;
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,17 +24,6 @@
   </head>
   <body>
       <header><?php include 'header.php';?></header>
-      <?php
-        include 'datafiles.php'; 
-        $item_id=$_GET['item_id'];
-        //$Item=$personObj->picSpecificItem($item_id);
-        $Item=$personObj->specificItem($item_id);
-
-        // for pic
-        $directory='uploads/item_pictures/';
-        $image=$Item['item_image'];
-        $src=$directory.$image;
-        ?>
       <!-- back to dashboarde -->
       <a href="userDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
 
