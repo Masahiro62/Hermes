@@ -23,6 +23,20 @@
 
       <main>
         <div class="conutainer-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <!-- add category -->
             <form action="" method="POST">
                 <div class="form-group pt-5 pb-3 text-center">
