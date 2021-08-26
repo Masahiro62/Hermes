@@ -96,20 +96,61 @@ if(isset($_POST['register'])){
     
 }elseif(isset($_POST['update_item'])){
     // update item
-    // var_dump($_POST);
-    // var_dump($_FILES);
-    //var_dump($item_id);
-    $u_item_name=$_POST['u_item_name"'];
+    $u_item_name=$_POST['u_item_name'];
     $u_item_description=$_POST['u_item_description'];
     $u_item_stocks=$_POST['u_item_stocks'];
     $u_item_price=$_POST['u_item_price'];
     $u_publish_date=$_POST['u_publish_date'];
     $u_category_id=$_POST['u_category_id'];
     $item_id=$_POST['item_id'];
-    $u_item_image=$_FILES['u_item_image'];
     $file=$_FILES;
 
-    $personObj->updateItem($u_item_name,$u_item_description,$u_item_stocks,$u_item_price,$u_publish_date,$u_category_id,$item_id,$u_item_image,$file);
-    // not working  sql is working but here not. WHY?
+    $personObj->updateItem($u_item_name,$u_item_description,$u_item_stocks,$u_item_price,$u_publish_date,$u_category_id,$item_id,$file);
+
+}elseif(isset($_POST['user_update'])){
+    //update user info
+    $user_id=$_POST['user_id'];
+    $u_email=$_POST['u_email'];
+    $u_fullname=$_POST['u_fullname'];
+    $u_address=$_POST['u_address'];
+    $u_contact_number=$_POST['u_contact_number'];
+    $account_id=$_POST['account_id'];
+    $u_password=$_POST['u_password'];
+    $u_conpassword=$_POST['u_conpassword'];
+    $u_username=$_POST['u_username'];
+    var_dump($_POST);
+    $personObj->upadteUserInfo($u_username,$u_password,$u_conpassword,$account_id,$u_fullname,$u_address,$u_contact_number,$u_email,$user_id);
+
+}elseif(isset($_POST['operation_account'])){
+    //delete account
+    $account_id=$_POST['account_id'];
+    $user_id=$_POST['user_id'];
+
+    $personObj->deleteaccount($account_id,$user_id);
+
+}elseif(isset($_POST['cal_item'])){
+    //cal item
+    // $stocks=$_POST['stock'];
+    $quantity=$_POST['quantity'];
+    $item_price=$_POST['item_price'];
+
+    $personObj->calItem($quantity,$item_price);
+
+}elseif(isset($_POST['order_item'])){
+    // order & buy 
+    $quantity=$_POST['quantity'];
+    $item_id=$_POST['item_id'];
+    $user_id=$_POST['user_id'];
+    $gross=$_POST['gross'];
+
+    $personObj->buyItem($quantity,$item_id,$user_id,$gross);
+
+}elseif(isset($_POST['change_status'])){
+    $u_status=$_POST['u_status'];
+    $delivery_id=$_POST['delivery_id'];
+    
+    $personObj->changeStatus($u_status,$delivery_id);
 }
+
+
 ?>
