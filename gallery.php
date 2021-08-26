@@ -22,7 +22,7 @@
         <div class="container-fluid">
         <?php
             include 'datafiles.php';
-            $Item=$personObj->displayItemeTable();
+            $Item=$personObj->publishedItem();
 
                 // for pic
                 $directory='uploads/item_pictures/';
