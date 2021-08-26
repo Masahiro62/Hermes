@@ -25,7 +25,7 @@
   <body>
       <header><?php include 'header.php';?></header>
         <!-- back to dashboarde -->
-        <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
+        <a href="items.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
 
       <main class="mt-3 mb-3">
         <div class="container-fluid">
