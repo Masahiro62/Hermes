@@ -20,10 +20,23 @@
       <header><?php include 'header.php'?></header>
         <!-- back to dashboarde -->
         <a href="adminDashboard.php"><i class="fas fa-angle-double-left display-4 mt-3"></i></a>
-
       <main>
       <!-- add event -->
         <div class="container-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mx-auto mt-5">
                 <div class="card-header">
                     <h3 class="text-center">EVENTS</h3>
