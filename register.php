@@ -17,6 +17,20 @@
       <main>
         <div class="btn me-5 mt-3 text-center" onclick="history.back()"><span>>>>BACK</span></div>
         <div class="container-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mx-auto mt-4 border-0">
                 <div class="card-header bg-white border-0">
                   <h3 class="text-center">RAGISTRATION</h3>
