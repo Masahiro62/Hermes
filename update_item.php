@@ -29,6 +29,20 @@
 
       <main class="mt-3 mb-3">
         <div class="container-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <section class="w-50 float-start ">
                 <div class="card w-75 mx-auto">
                     <div class="card-header border border-0 bg-white">
