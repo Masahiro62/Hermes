@@ -479,7 +479,6 @@ class  person extends config{
                 INNER JOIN `accounts`ON users.account_id=accounts.account_id";
                 
         $result=$this->conn->query($sql);
-        var_dump($sql);
         $records=array();
 
         if($result->num_rows>0){
