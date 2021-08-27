@@ -11,7 +11,6 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
   </head>
   <body>
       <header><?php include'header.php';?></header>
@@ -22,6 +21,20 @@
       <main>
         <!-- order list and just show the table nobody can not change except changeing db -->
         <div class="container-flud">
+            <div class="w-25 mx-auto mt-5">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mx-auto mt-5 mb-5">
                 <div class="card-header">
                     <h3 class="text-center">ORDER LIST</h3>
@@ -37,9 +50,10 @@
                         <tbody>
                             <?php
                                 $displayOrder=$personObj->displayOrderTable();
+                                
                                 if($displayOrder==false){
                             ?>
-                                <td colspan="3" class="text-danger">No Record Found</td>
+                                <td colspan="4" class="text-danger">No Record Found</td>
                             <?php
                                 }else{
                                 foreach($displayOrder as $Order ){

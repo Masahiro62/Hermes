@@ -14,7 +14,13 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      body{
+        /* background-image: url(assets/image/carts.jpg); */
+        background-color: whitesmoke;
+      }
 
+    </style>
   </head>
   <body>
       <header><?php include 'header.php';?></header>
@@ -24,14 +30,29 @@
 
       <main>
       <div class="container-fluid">
+              <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mx-auto mt-4 border-0 mb-5">
                 <div class="card-header bg-white border-0">
-                  <h3 class="text-center">Your Infomation </h3>
+                  <h3 class="text-center pt-5">Your Infomation </h3>
                 </div>
 
                 <div class="card-body">
                       <!-- aria-describedby="helpId" what the meaning of the code is  -->
                     <form action="" method="post">
+                          <input type="text"hidden name="user_id" value="<?php echo $User['user_id']?>">
                           <div class="form-group mt-3">
                             <label for="fullname">FULL NAME:</label>
                             <input type="text" name="u_fullname" value="<?php echo $User['fullname']?>" id="fullname" class="form-control p-2"  >

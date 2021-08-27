@@ -8,7 +8,13 @@
 
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      body{
+        /* background-image: url(assets/image/carts.jpg); */
+        background-color: whitesmoke;
+      }
 
+    </style>
   </head>
   <body>
       <head><?php include 'header.php';?></head>
@@ -36,7 +42,7 @@
                     $src=$directory.$image;
         ?>
             <div class="card w-25 mt-5 ms-5 me-5 float-start">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: white;">
                         <h4 class="text-center"><?php echo $item['item_name']?></h4>
                     </div>
                     <div class="card-body">
