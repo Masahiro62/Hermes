@@ -14,6 +14,20 @@
     <header></header>
     <main>
         <div class="container-fluid">
+            <div class="w-50 mx-auto mt-5 text-center">
+                <?php 
+                    if(isset($_GET["success"]) && isset($_GET["message"]))
+                    {
+                        $success = $_GET["success"];
+                        $message = $_GET["message"];
+                        $class = ($success == 1)?"success":"danger";
+    
+                        echo "<div class='alert alert-$class' role='alert'>";
+                        echo $message;
+                        echo "</div>";
+                    }
+                ?>
+            </div>
             <div class="card w-50 mt-5 p-5 mx-auto border-0">
                 <div class="card-head ">
                     <h1 class="text-center">LOGIN</h1>
